@@ -440,11 +440,13 @@ INFO:trackastra.model.model_api:Using device cuda
 <p>Below we compute the tracks.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The following paramaters are especially important for tracking:
-- <code class="docutils literal notranslate"><span class="pre">mode</span></code>: The greedy solver simply takes the most probable option at each point, it is fast but simple. <code class="docutils literal notranslate"><span class="pre">greedy_nodiv</span></code>is the same, but without divisions, which is the case in this data. Finally the <code class="docutils literal notranslate"><span class="pre">ilp</span></code> solver is the best, but also the slowest. It requires additional libraries to be installed.
-- <code class="docutils literal notranslate"><span class="pre">use_distance</span></code>: If set, tracks further apart than the distance are not connected. This must be tuned depending on the data.
-- <code class="docutils literal notranslate"><span class="pre">max_distance</span></code>: The maximum distance between two points to be connected, see above.
-- <code class="docutils literal notranslate"><span class="pre">allow_divisions</span></code>: If set, the algorithm allows divisions of tracks. Disable this if divisions are not part of the data.</p>
+<p>The following paramaters are especially important for tracking:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: The greedy solver simply takes the most probable option at each point, it is fast but simple. <code class="docutils literal notranslate"><span class="pre">greedy_nodiv</span></code>is the same, but without divisions, which is the case in this data. Finally the <code class="docutils literal notranslate"><span class="pre">ilp</span></code> solver is the best, but also the slowest. It requires additional libraries to be installed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_distance</span></code>: If set, tracks further apart than the distance are not connected. This must be tuned depending on the data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_distance</span></code>: The maximum distance between two points to be connected, see above.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_divisions</span></code>: If set, the algorithm allows divisions of tracks. Disable this if divisions are not part of the data.</p></li>
+</ul>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
