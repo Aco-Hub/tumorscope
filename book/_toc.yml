@@ -7,6 +7,7 @@ parts:
   - caption: Segmentation
     chapters:
     - file: segmentation
+    - file: tcells_segmentation
   - caption : Tracking
     chapters:
     - file: tracking_tastra
