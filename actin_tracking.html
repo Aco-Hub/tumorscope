@@ -1,0 +1,2031 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Tumorscope</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=309ca802" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'actin_tracking';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_round.png" class="logo__image only-light" alt="Tumorscope - Home"/>
+    <script>document.write(`<img src="_static/logo_round.png" class="logo__image only-dark" alt="Tumorscope - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="welcome.html">
+                    Tumorscope
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="segmentation.html">Segmenting with Cellpose</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tracking_tastra.html">Tracking with Trackastra</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/actin_tracking.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tifffile</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imwrite</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">resize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="c1"># import pyclesperanto_prototype as cle</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># root_path = Path(&quot;../../pvc/scratch/interaction_cells/datasets/&quot;)</span>
+<span class="n">root_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Cyril\Desktop\Code\tumorscope\DATA&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading image...&quot;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">root_path</span> <span class="o">/</span> <span class="s2">&quot;series003_cCAR_tumor.tif&quot;</span><span class="p">)</span>
+
+<span class="n">image_actin_channel</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">image_calcium_channel</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading image...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(162, 1412, 1412)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_resized</span> <span class="o">=</span>  <span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">image_actin_resized</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">image_actin_channel</span><span class="p">,</span> <span class="p">(</span><span class="n">image_actin_channel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">image_actin_channel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">image_actin_channel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">image_calcium_resized</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">image_calcium_channel</span><span class="p">,</span> <span class="p">(</span><span class="n">image_calcium_channel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">image_calcium_channel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">image_calcium_channel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image_resized</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image_actin_resized</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;actin&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image_calcium_resized</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;calcium&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Image layer &#39;calcium&#39; at 0x1c9aa1485b0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyclesperanto_prototype</span><span class="w"> </span><span class="kn">import</span> <span class="n">difference_of_gaussian</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">watershed</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.measure</span><span class="w"> </span><span class="kn">import</span> <span class="n">regionprops</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actin_dog</span> <span class="o">=</span> <span class="n">difference_of_gaussian</span><span class="p">(</span><span class="n">image_actin_resized</span><span class="p">,</span> 
+                                   <span class="n">sigma1_x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sigma2_x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                                   <span class="n">sigma1_y</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sigma2_y</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                                   <span class="n">sigma1_z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma2_z</span><span class="o">=</span><span class="mi">0</span>
+                                   <span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">actin_dog</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">actin_dog</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 warnings generated.
+8 warnings generated.
+8 warnings generated.
+8 warnings generated.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actin_dog_filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">actin_dog</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">actin_dog</span><span class="p">)</span>
+<span class="c1"># actin_dog_filtered = np.where(actin_dog_filtered &gt; 0.3, 0, actin_dog_filtered)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actin_dog_filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">actin_dog_filtered</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># actin_dog_filtered_labels = voronoi_otsu_labeling(actin_dog_filtered, spot_sigma=5, outline_sigma=2)</span>
+<span class="n">actin_dog_filtered_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">actin_dog_filtered</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">actin_dog_filtered</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="n">actin_dog_filtered</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">frame_flipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> <span class="o">-</span> <span class="n">frame</span>
+    <span class="n">frame_flipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">frame</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">frame_flipped</span><span class="p">)</span>
+    <span class="n">wshed</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="n">frame_flipped</span><span class="p">)</span>
+    <span class="n">actin_dog_filtered_labels</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">frame</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wshed</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "212284c68c814d2dbbb6a0b51d7df6d1", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calcium_mask = np.where(image_calcium_resized &gt; 0.003, 1, 0)</span>
+<span class="c1"># calcium_mask = np.array(calcium_mask, dtype=np.uint8)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">filter_labels_by_area</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">min_area</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_area</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter labels by area using regionprops.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filtered_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">masks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">masks</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">regionprops</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">props</span><span class="p">:</span>
+            <span class="n">area</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">area</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">min_area</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">area</span> <span class="o">&gt;=</span> <span class="n">min_area</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">max_area</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">area</span> <span class="o">&lt;=</span> <span class="n">max_area</span><span class="p">):</span>
+                <span class="n">filtered_labels</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">labels</span> <span class="o">==</span> <span class="n">prop</span><span class="o">.</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">label</span>
+    <span class="k">return</span> <span class="n">filtered_labels</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actin_dog_filtered_labels</span> <span class="o">=</span> <span class="n">filter_labels_by_area</span><span class="p">(</span><span class="n">actin_dog_filtered_labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">),</span> <span class="n">min_area</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_area</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cecd8dbfc41749d5a9bcb2f01be24f06", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a pretrained model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">trackastra.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Trackastra</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Trackastra</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;general_2d&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:trackastra.model.model:Loading model state from /home/achard/.trackastra/.models/general_2d/model.pt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/achard/.trackastra/.models/general_2d already downloaded, skipping.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:trackastra.model.model_api:Using device cuda
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Track the cells</span>
+<span class="n">track_graph</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">image_resized</span><span class="p">,</span> <span class="n">actin_dog_filtered_labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;greedy_nodiv&quot;</span><span class="p">,</span> <span class="n">use_distance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_distance</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">allow_divisions</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># or mode=&quot;ilp&quot;, or &quot;greedy_nodiv&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:trackastra.model.model_api:Predicting weights for candidate graph
+INFO:trackastra.data.wrfeat:Extracting features from 162 detections
+INFO:trackastra.data.wrfeat:Using single process for feature extraction
+Extracting features: 100%|██████████| 162/162 [00:19&lt;00:00,  8.46it/s]
+INFO:trackastra.model.model_api:Building windows
+Building windows: 100%|██████████| 159/159 [00:00&lt;00:00, 11919.04it/s]
+INFO:trackastra.model.model_api:Predicting windows
+Computing associations: 100%|██████████| 159/159 [00:10&lt;00:00, 15.68it/s]
+INFO:trackastra.model.model_api:Running greedy tracker
+INFO:trackastra.tracking.tracking:Build candidate graph with delta_t=1
+INFO:trackastra.tracking.tracking:Added 55415 vertices, 75651 edges                          
+INFO:trackastra.tracking.tracking:Running greedy tracker
+Greedily matched edges:  62%|██████▏   | 46742/75651 [00:00&lt;00:00, 147159.39it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">trackastra.tracking</span><span class="w"> </span><span class="kn">import</span> <span class="n">graph_to_ctc</span><span class="p">,</span> <span class="n">graph_to_napari_tracks</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write to cell tracking challenge format</span>
+<span class="n">ctc_tracks</span><span class="p">,</span> <span class="n">masks_tracked</span> <span class="o">=</span> <span class="n">graph_to_ctc</span><span class="p">(</span>
+      <span class="n">track_graph</span><span class="p">,</span>
+      <span class="n">actin_dog_filtered_labels</span><span class="p">,</span>
+      <span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;../../pvc/scratch/SHARE/cancer_cell_masks/series003_cCAR_tumor_tracked/actin_tracked&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Converting graph to CTC results: 100%|██████████| 5778/5778 [00:00&lt;00:00, 6254.94it/s]
+Saving masks: 100%|██████████| 162/162 [00:00&lt;00:00, 195.52it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari_ctc_io.reader</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_ctc</span><span class="p">,</span> <span class="n">_ctc_to_napari_tracks</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">tracks_graph</span> <span class="o">=</span> <span class="n">read_ctc</span><span class="p">(</span>
+    <span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Cyril\Desktop\Code\tumorscope\DATA\actin_tracked&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:napari_ctc_io.reader:Loaded tracks from C:\Users\Cyril\Desktop\Code\tumorscope\DATA\actin_tracked\man_track.txt
+INFO:napari_ctc_io.reader:Running CTC format checks
+INFO:napari_ctc_io.reader:Checks completed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tracks_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tracks</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;frame&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">])</span>
+<span class="n">tracks_df</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+<span class="n">tracks_df</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">filter_masks_by_time</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks_df</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter masks by their length.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">masks_ids</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="n">valid_masks</span> <span class="o">=</span> <span class="n">masks_ids</span><span class="p">[</span><span class="n">masks_ids</span> <span class="o">&gt;=</span> <span class="n">min_length</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1"># In the masks array (T, H, W), remove labels with values that are not in valid_masks</span>
+    <span class="n">masks_filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">masks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">masks_filtered</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">valid_masks</span><span class="p">),</span> <span class="n">masks</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">tracks_df_filtered</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="p">[</span><span class="n">tracks_df</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">valid_masks</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">masks_filtered</span><span class="p">,</span> <span class="n">tracks_df_filtered</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks_filtered</span><span class="p">,</span> <span class="n">filtered_tracks_df</span> <span class="o">=</span> <span class="n">filter_masks_by_time</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks_df</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">masks_filtered</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;masks_filtered&quot;</span><span class="p">)</span>
+
+<span class="n">filtered_tracks</span> <span class="o">=</span> <span class="n">filtered_tracks_df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">add_tracks</span><span class="p">(</span><span class="n">filtered_tracks</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;filtered_tracks&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Tracks layer &#39;filtered_tracks&#39; at 0x1c9e7a79b10&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import threshold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.measure</span><span class="w"> </span><span class="kn">import</span> <span class="n">label</span><span class="p">,</span> <span class="n">regionprops</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcium_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">image_calcium_resized</span> <span class="o">&gt;</span> <span class="mf">0.003</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">calcium_mask</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">calcium_mask</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">filter_labels_by_area</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">min_area</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_area</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter labels by area using regionprops.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filtered_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">masks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">masks</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">regionprops</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">props</span><span class="p">:</span>
+            <span class="n">area</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">area</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">min_area</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">area</span> <span class="o">&gt;=</span> <span class="n">min_area</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">max_area</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">area</span> <span class="o">&lt;=</span> <span class="n">max_area</span><span class="p">):</span>
+                <span class="n">filtered_labels</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">labels</span> <span class="o">==</span> <span class="n">prop</span><span class="o">.</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">label</span>
+    <span class="k">return</span> <span class="n">filtered_labels</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcium_mask</span> <span class="o">=</span> <span class="n">filter_labels_by_area</span><span class="p">(</span><span class="n">calcium_mask</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">),</span> <span class="n">min_area</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_area</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 162/162 [00:01&lt;00:00, 154.35it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">calcium_mask</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;calcium_mask&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Labels layer &#39;calcium_mask [1]&#39; at 0x1c9ac133a90&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TCell</span><span class="p">:</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">calcium_labels</span><span class="p">:</span> <span class="nb">dict</span>
+    <span class="n">N_frames_calcium_positive</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_calcium_positive_labels</span><span class="p">(</span><span class="n">actin_masks</span><span class="p">,</span> <span class="n">calcium_masks</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the labels of the masks that have positive calcium channel, tracking them across frames.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">merged_tracking_masks</span> <span class="o">=</span> <span class="n">actin_masks</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">tcells</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">actin_masks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">calcium_masks</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="n">actin_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">actin_masks</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+        <span class="n">calcium_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">calcium_masks</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+        <span class="n">actin_labels</span> <span class="o">=</span> <span class="n">actin_labels</span><span class="p">[</span><span class="n">actin_labels</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">calcium_labels</span> <span class="o">=</span> <span class="n">calcium_labels</span><span class="p">[</span><span class="n">calcium_labels</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">calcium_lab</span> <span class="ow">in</span> <span class="n">calcium_labels</span><span class="p">:</span>
+            <span class="n">calcium_overlap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">calcium_masks</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">calcium_lab</span><span class="p">,</span> <span class="n">actin_masks</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">positive_actin_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">calcium_overlap</span><span class="p">)</span>
+            <span class="n">positive_actin_labels</span> <span class="o">=</span> <span class="n">positive_actin_labels</span><span class="p">[</span><span class="n">positive_actin_labels</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># in the WHOLE merged tracking masks, change the values of other labels that touch this calcium label to the first actin label</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positive_actin_labels</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">merged_tracking_masks</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">merged_tracking_masks</span><span class="p">,</span> <span class="n">positive_actin_labels</span><span class="p">))]</span> <span class="o">=</span> <span class="n">positive_actin_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="c1"># if the label is not in the dictionary, create a new TCell object</span>
+                <span class="k">if</span> <span class="n">positive_actin_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tcells</span><span class="p">:</span>
+                    <span class="n">tcells</span><span class="p">[</span><span class="n">positive_actin_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">TCell</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">positive_actin_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">calcium_labels</span><span class="o">=</span><span class="p">{</span><span class="n">t</span> <span class="p">:</span> <span class="n">calcium_lab</span><span class="p">})</span>
+                <span class="c1"># if the label is in the dictionary, add the calcium label to the dictionary</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">tcells</span><span class="p">[</span><span class="n">positive_actin_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">calcium_labels</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">calcium_lab</span>
+                    <span class="n">tcells</span><span class="p">[</span><span class="n">positive_actin_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">N_frames_calcium_positive</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">merged_tracking_masks</span><span class="p">,</span> <span class="n">tcells</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcium_dict</span><span class="p">,</span> <span class="n">merged_masks</span> <span class="o">=</span> <span class="n">get_calcium_positive_labels</span><span class="p">(</span><span class="n">masks_filtered</span><span class="p">,</span> <span class="n">calcium_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/162 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 21/162 [01:19&lt;08:10,  3.48s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcium_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: {2: TCell(labels=[2], calcium_labels=array([118], dtype=uint16), N_frames_calcium_positive=1),
+  3: TCell(labels=[3], calcium_labels=array([416, 825], dtype=uint16), N_frames_calcium_positive=2),
+  5: TCell(labels=[5], calcium_labels=array([129, 567, 989], dtype=uint16), N_frames_calcium_positive=3),
+  7: TCell(labels=[7], calcium_labels=array([ 35, 473, 908], dtype=uint16), N_frames_calcium_positive=3),
+  8: TCell(labels=[8], calcium_labels=array([432], dtype=uint16), N_frames_calcium_positive=1),
+  14: TCell(labels=[14], calcium_labels=array([299], dtype=uint16), N_frames_calcium_positive=1),
+  16: TCell(labels=[16], calcium_labels=array([170], dtype=uint16), N_frames_calcium_positive=1),
+  18: TCell(labels=[18], calcium_labels=array([333], dtype=uint16), N_frames_calcium_positive=1),
+  20: TCell(labels=[20], calcium_labels=array([120], dtype=uint16), N_frames_calcium_positive=1),
+  22: TCell(labels=[22], calcium_labels=array([93], dtype=uint16), N_frames_calcium_positive=1),
+  23: TCell(labels=[23], calcium_labels=array([ 175,  614, 1025, 1533, 1998], dtype=uint16), N_frames_calcium_positive=5),
+  30: TCell(labels=[30], calcium_labels=array([  49,  497,  905, 1381], dtype=uint16), N_frames_calcium_positive=4),
+  36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  39: TCell(labels=[39], calcium_labels=array([189, 660], dtype=uint16), N_frames_calcium_positive=2),
+  40: TCell(labels=[40], calcium_labels=array([322, 745], dtype=uint16), N_frames_calcium_positive=2),
+  42: TCell(labels=[42], calcium_labels=array([323], dtype=uint16), N_frames_calcium_positive=1),
+  47: TCell(labels=[47], calcium_labels=array([ 217,  666, 1070], dtype=uint16), N_frames_calcium_positive=3),
+  49: TCell(labels=[49], calcium_labels=array([147], dtype=uint16), N_frames_calcium_positive=1),
+  58: TCell(labels=[58], calcium_labels=array([ 353,  762, 1241, 1722, 2171], dtype=uint16), N_frames_calcium_positive=5),
+  62: TCell(labels=[62], calcium_labels=array([ 174,  181,  609, 1024], dtype=uint16), N_frames_calcium_positive=3),
+  66: TCell(labels=[66], calcium_labels=array([105, 536], dtype=uint16), N_frames_calcium_positive=2),
+  68: TCell(labels=[68], calcium_labels=array([433, 850], dtype=uint16), N_frames_calcium_positive=2),
+  73: TCell(labels=[73], calcium_labels=array([ 155,  593, 1000], dtype=uint16), N_frames_calcium_positive=3),
+  74: TCell(labels=[74], calcium_labels=array([105, 536, 957], dtype=uint16), N_frames_calcium_positive=3),
+  78: TCell(labels=[78], calcium_labels=array([8], dtype=uint16), N_frames_calcium_positive=1),
+  85: TCell(labels=[85], calcium_labels=array([ 158,  603, 1001], dtype=uint16), N_frames_calcium_positive=3),
+  89: TCell(labels=[89], calcium_labels=array([ 217,  666, 1063], dtype=uint16), N_frames_calcium_positive=3),
+  90: TCell(labels=[90], calcium_labels=array([174, 609], dtype=uint16), N_frames_calcium_positive=2),
+  98: TCell(labels=[98], calcium_labels=array([347, 762], dtype=uint16), N_frames_calcium_positive=2),
+  101: TCell(labels=[101], calcium_labels=array([323], dtype=uint16), N_frames_calcium_positive=1),
+  103: TCell(labels=[103], calcium_labels=array([ 402,  819, 1287], dtype=uint16), N_frames_calcium_positive=3),
+  105: TCell(labels=[105], calcium_labels=array([156, 600], dtype=uint16), N_frames_calcium_positive=2),
+  110: TCell(labels=[110], calcium_labels=array([111, 549, 965], dtype=uint16), N_frames_calcium_positive=3),
+  114: TCell(labels=[114], calcium_labels=array([192], dtype=uint16), N_frames_calcium_positive=1),
+  123: TCell(labels=[123], calcium_labels=array([ 25, 450, 878, 891], dtype=uint16), N_frames_calcium_positive=3),
+  126: TCell(labels=[126], calcium_labels=array([374, 808], dtype=uint16), N_frames_calcium_positive=2),
+  138: TCell(labels=[138], calcium_labels=array([ 178,  617, 1030, 1534, 1554], dtype=uint16), N_frames_calcium_positive=4)},
+ 1: {},
+ 2: {},
+ 3: {},
+ 4: {},
+ 5: {},
+ 6: {},
+ 7: {},
+ 8: {},
+ 9: {},
+ 10: {3: TCell(labels=[3], calcium_labels=array([416, 825], dtype=uint16), N_frames_calcium_positive=2),
+  5: TCell(labels=[5], calcium_labels=array([129, 567, 989], dtype=uint16), N_frames_calcium_positive=3),
+  7: TCell(labels=[7], calcium_labels=array([ 35, 473, 908], dtype=uint16), N_frames_calcium_positive=3),
+  23: TCell(labels=[23], calcium_labels=array([ 175,  614, 1025, 1533, 1998], dtype=uint16), N_frames_calcium_positive=5),
+  30: TCell(labels=[30], calcium_labels=array([  49,  497,  905, 1381], dtype=uint16), N_frames_calcium_positive=4),
+  36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  39: TCell(labels=[39], calcium_labels=array([189, 660], dtype=uint16), N_frames_calcium_positive=2),
+  40: TCell(labels=[40], calcium_labels=array([322, 745], dtype=uint16), N_frames_calcium_positive=2),
+  47: TCell(labels=[47], calcium_labels=array([ 217,  666, 1070], dtype=uint16), N_frames_calcium_positive=3),
+  50: TCell(labels=[50], calcium_labels=array([554], dtype=uint16), N_frames_calcium_positive=1),
+  51: TCell(labels=[51], calcium_labels=array([763], dtype=uint16), N_frames_calcium_positive=1),
+  58: TCell(labels=[58], calcium_labels=array([ 353,  762, 1241, 1722, 2171], dtype=uint16), N_frames_calcium_positive=5),
+  62: TCell(labels=[62], calcium_labels=array([ 174,  181,  609, 1024], dtype=uint16), N_frames_calcium_positive=3),
+  66: TCell(labels=[66], calcium_labels=array([105, 536], dtype=uint16), N_frames_calcium_positive=2),
+  68: TCell(labels=[68], calcium_labels=array([433, 850], dtype=uint16), N_frames_calcium_positive=2),
+  73: TCell(labels=[73], calcium_labels=array([ 155,  593, 1000], dtype=uint16), N_frames_calcium_positive=3),
+  74: TCell(labels=[74], calcium_labels=array([105, 536, 957], dtype=uint16), N_frames_calcium_positive=3),
+  85: TCell(labels=[85], calcium_labels=array([ 158,  603, 1001], dtype=uint16), N_frames_calcium_positive=3),
+  89: TCell(labels=[89], calcium_labels=array([ 217,  666, 1063], dtype=uint16), N_frames_calcium_positive=3),
+  90: TCell(labels=[90], calcium_labels=array([174, 609], dtype=uint16), N_frames_calcium_positive=2),
+  98: TCell(labels=[98], calcium_labels=array([347, 762], dtype=uint16), N_frames_calcium_positive=2),
+  103: TCell(labels=[103], calcium_labels=array([ 402,  819, 1287], dtype=uint16), N_frames_calcium_positive=3),
+  104: TCell(labels=[104], calcium_labels=array([489], dtype=uint16), N_frames_calcium_positive=1),
+  105: TCell(labels=[105], calcium_labels=array([156, 600], dtype=uint16), N_frames_calcium_positive=2),
+  110: TCell(labels=[110], calcium_labels=array([111, 549, 965], dtype=uint16), N_frames_calcium_positive=3),
+  113: TCell(labels=[113], calcium_labels=array([819], dtype=uint16), N_frames_calcium_positive=1),
+  123: TCell(labels=[123], calcium_labels=array([ 25, 450, 878, 891], dtype=uint16), N_frames_calcium_positive=3),
+  126: TCell(labels=[126], calcium_labels=array([374, 808], dtype=uint16), N_frames_calcium_positive=2),
+  138: TCell(labels=[138], calcium_labels=array([ 178,  617, 1030, 1534, 1554], dtype=uint16), N_frames_calcium_positive=4),
+  140: TCell(labels=[140], calcium_labels=array([615], dtype=uint16), N_frames_calcium_positive=1),
+  151: TCell(labels=[151], calcium_labels=array([854], dtype=uint16), N_frames_calcium_positive=1),
+  157: TCell(labels=[157], calcium_labels=array([619], dtype=uint16), N_frames_calcium_positive=1),
+  158: TCell(labels=[158], calcium_labels=array([647], dtype=uint16), N_frames_calcium_positive=1),
+  164: TCell(labels=[164], calcium_labels=array([705], dtype=uint16), N_frames_calcium_positive=1),
+  171: TCell(labels=[171], calcium_labels=array([649], dtype=uint16), N_frames_calcium_positive=1),
+  173: TCell(labels=[173], calcium_labels=array([ 681, 1083], dtype=uint16), N_frames_calcium_positive=2),
+  176: TCell(labels=[176], calcium_labels=array([745], dtype=uint16), N_frames_calcium_positive=1),
+  177: TCell(labels=[177], calcium_labels=array([839], dtype=uint16), N_frames_calcium_positive=1),
+  182: TCell(labels=[182], calcium_labels=array([706], dtype=uint16), N_frames_calcium_positive=1),
+  183: TCell(labels=[183], calcium_labels=array([464], dtype=uint16), N_frames_calcium_positive=1),
+  196: TCell(labels=[196], calcium_labels=array([ 724, 1142], dtype=uint16), N_frames_calcium_positive=2),
+  199: TCell(labels=[199], calcium_labels=array([800], dtype=uint16), N_frames_calcium_positive=1),
+  205: TCell(labels=[205], calcium_labels=array([ 668, 1057, 1564, 1576, 2022, 2494, 2506], dtype=uint16), N_frames_calcium_positive=5),
+  206: TCell(labels=[206], calcium_labels=array([687], dtype=uint16), N_frames_calcium_positive=1),
+  210: TCell(labels=[210], calcium_labels=array([ 748, 1193, 1699, 2134, 2591], dtype=uint16), N_frames_calcium_positive=5),
+  226: TCell(labels=[226], calcium_labels=array([ 863, 1320], dtype=uint16), N_frames_calcium_positive=2),
+  236: TCell(labels=[236], calcium_labels=array([ 519,  935, 1409], dtype=uint16), N_frames_calcium_positive=3),
+  249: TCell(labels=[249], calcium_labels=array([745], dtype=uint16), N_frames_calcium_positive=1),
+  250: TCell(labels=[250], calcium_labels=array([825], dtype=uint16), N_frames_calcium_positive=1),
+  255: TCell(labels=[255], calcium_labels=array([551], dtype=uint16), N_frames_calcium_positive=1),
+  256: TCell(labels=[256], calcium_labels=array([ 823, 1278], dtype=uint16), N_frames_calcium_positive=2),
+  275: TCell(labels=[275], calcium_labels=array([550, 961], dtype=uint16), N_frames_calcium_positive=2),
+  278: TCell(labels=[278], calcium_labels=array([ 637, 1048, 1054, 1563], dtype=uint16), N_frames_calcium_positive=3),
+  284: TCell(labels=[284], calcium_labels=array([695, 704], dtype=uint16), N_frames_calcium_positive=1),
+  285: TCell(labels=[285], calcium_labels=array([519], dtype=uint16), N_frames_calcium_positive=1),
+  286: TCell(labels=[286], calcium_labels=array([492], dtype=uint16), N_frames_calcium_positive=1),
+  293: TCell(labels=[293], calcium_labels=array([820], dtype=uint16), N_frames_calcium_positive=1),
+  303: TCell(labels=[303], calcium_labels=array([ 806, 1258], dtype=uint16), N_frames_calcium_positive=2),
+  313: TCell(labels=[313], calcium_labels=array([615], dtype=uint16), N_frames_calcium_positive=1),
+  316: TCell(labels=[316], calcium_labels=array([633], dtype=uint16), N_frames_calcium_positive=1),
+  328: TCell(labels=[328], calcium_labels=array([ 656, 1057], dtype=uint16), N_frames_calcium_positive=2),
+  331: TCell(labels=[331], calcium_labels=array([ 656, 1057, 1564, 2022, 2494], dtype=uint16), N_frames_calcium_positive=5),
+  342: TCell(labels=[342], calcium_labels=array([ 660, 1051, 1554], dtype=uint16), N_frames_calcium_positive=3),
+  343: TCell(labels=[343], calcium_labels=array([694, 696], dtype=uint16), N_frames_calcium_positive=1),
+  344: TCell(labels=[344], calcium_labels=array([649], dtype=uint16), N_frames_calcium_positive=1),
+  364: TCell(labels=[364], calcium_labels=array([841], dtype=uint16), N_frames_calcium_positive=1),
+  371: TCell(labels=[371], calcium_labels=array([537], dtype=uint16), N_frames_calcium_positive=1),
+  374: TCell(labels=[374], calcium_labels=array([ 820, 1281, 1769, 2233, 2684], dtype=uint16), N_frames_calcium_positive=5),
+  375: TCell(labels=[375], calcium_labels=array([518, 940], dtype=uint16), N_frames_calcium_positive=2),
+  381: TCell(labels=[381], calcium_labels=array([ 743, 1177], dtype=uint16), N_frames_calcium_positive=2),
+  385: TCell(labels=[385], calcium_labels=array([ 575,  976, 1458], dtype=uint16), N_frames_calcium_positive=3)},
+ 11: {},
+ 12: {},
+ 13: {},
+ 14: {},
+ 15: {},
+ 16: {},
+ 17: {},
+ 18: {},
+ 19: {},
+ 20: {5: TCell(labels=[5], calcium_labels=array([129, 567, 989], dtype=uint16), N_frames_calcium_positive=3),
+  7: TCell(labels=[7], calcium_labels=array([ 35, 473, 908], dtype=uint16), N_frames_calcium_positive=3),
+  11: TCell(labels=[11], calcium_labels=array([1264, 1759], dtype=uint16), N_frames_calcium_positive=2),
+  17: TCell(labels=[17], calcium_labels=array([ 879, 1349], dtype=uint16), N_frames_calcium_positive=2),
+  21: TCell(labels=[21], calcium_labels=array([971], dtype=uint16), N_frames_calcium_positive=1),
+  23: TCell(labels=[23], calcium_labels=array([ 175,  614, 1025, 1533, 1998], dtype=uint16), N_frames_calcium_positive=5),
+  30: TCell(labels=[30], calcium_labels=array([  49,  497,  905, 1381], dtype=uint16), N_frames_calcium_positive=4),
+  36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  44: TCell(labels=[44], calcium_labels=array([1200, 1693, 2134, 2591, 2604, 3081], dtype=uint16), N_frames_calcium_positive=5),
+  47: TCell(labels=[47], calcium_labels=array([ 217,  666, 1070], dtype=uint16), N_frames_calcium_positive=3),
+  58: TCell(labels=[58], calcium_labels=array([ 353,  762, 1241, 1722, 2171], dtype=uint16), N_frames_calcium_positive=5),
+  62: TCell(labels=[62], calcium_labels=array([ 174,  181,  609, 1024], dtype=uint16), N_frames_calcium_positive=3),
+  73: TCell(labels=[73], calcium_labels=array([ 155,  593, 1000], dtype=uint16), N_frames_calcium_positive=3),
+  74: TCell(labels=[74], calcium_labels=array([105, 536, 957], dtype=uint16), N_frames_calcium_positive=3),
+  85: TCell(labels=[85], calcium_labels=array([ 158,  603, 1001], dtype=uint16), N_frames_calcium_positive=3),
+  89: TCell(labels=[89], calcium_labels=array([ 217,  666, 1063], dtype=uint16), N_frames_calcium_positive=3),
+  96: TCell(labels=[96], calcium_labels=array([908], dtype=uint16), N_frames_calcium_positive=1),
+  103: TCell(labels=[103], calcium_labels=array([ 402,  819, 1287], dtype=uint16), N_frames_calcium_positive=3),
+  110: TCell(labels=[110], calcium_labels=array([111, 549, 965], dtype=uint16), N_frames_calcium_positive=3),
+  123: TCell(labels=[123], calcium_labels=array([ 25, 450, 878, 891], dtype=uint16), N_frames_calcium_positive=3),
+  138: TCell(labels=[138], calcium_labels=array([ 178,  617, 1030, 1534, 1554], dtype=uint16), N_frames_calcium_positive=4),
+  173: TCell(labels=[173], calcium_labels=array([ 681, 1083], dtype=uint16), N_frames_calcium_positive=2),
+  196: TCell(labels=[196], calcium_labels=array([ 724, 1142], dtype=uint16), N_frames_calcium_positive=2),
+  197: TCell(labels=[197], calcium_labels=array([1003, 1517], dtype=uint16), N_frames_calcium_positive=2),
+  205: TCell(labels=[205], calcium_labels=array([ 668, 1057, 1564, 1576, 2022, 2494, 2506], dtype=uint16), N_frames_calcium_positive=5),
+  210: TCell(labels=[210], calcium_labels=array([ 748, 1193, 1699, 2134, 2591], dtype=uint16), N_frames_calcium_positive=5),
+  216: TCell(labels=[216], calcium_labels=array([1282], dtype=uint16), N_frames_calcium_positive=1),
+  226: TCell(labels=[226], calcium_labels=array([ 863, 1320], dtype=uint16), N_frames_calcium_positive=2),
+  236: TCell(labels=[236], calcium_labels=array([ 519,  935, 1409], dtype=uint16), N_frames_calcium_positive=3),
+  256: TCell(labels=[256], calcium_labels=array([ 823, 1278], dtype=uint16), N_frames_calcium_positive=2),
+  275: TCell(labels=[275], calcium_labels=array([550, 961], dtype=uint16), N_frames_calcium_positive=2),
+  278: TCell(labels=[278], calcium_labels=array([ 637, 1048, 1054, 1563], dtype=uint16), N_frames_calcium_positive=3),
+  295: TCell(labels=[295], calcium_labels=array([890], dtype=uint16), N_frames_calcium_positive=1),
+  301: TCell(labels=[301], calcium_labels=array([1297], dtype=uint16), N_frames_calcium_positive=1),
+  303: TCell(labels=[303], calcium_labels=array([ 806, 1258], dtype=uint16), N_frames_calcium_positive=2),
+  328: TCell(labels=[328], calcium_labels=array([ 656, 1057], dtype=uint16), N_frames_calcium_positive=2),
+  331: TCell(labels=[331], calcium_labels=array([ 656, 1057, 1564, 2022, 2494], dtype=uint16), N_frames_calcium_positive=5),
+  342: TCell(labels=[342], calcium_labels=array([ 660, 1051, 1554], dtype=uint16), N_frames_calcium_positive=3),
+  374: TCell(labels=[374], calcium_labels=array([ 820, 1281, 1769, 2233, 2684], dtype=uint16), N_frames_calcium_positive=5),
+  375: TCell(labels=[375], calcium_labels=array([518, 940], dtype=uint16), N_frames_calcium_positive=2),
+  381: TCell(labels=[381], calcium_labels=array([ 743, 1177], dtype=uint16), N_frames_calcium_positive=2),
+  385: TCell(labels=[385], calcium_labels=array([ 575,  976, 1458], dtype=uint16), N_frames_calcium_positive=3),
+  397: TCell(labels=[397], calcium_labels=array([957], dtype=uint16), N_frames_calcium_positive=1),
+  410: TCell(labels=[410], calcium_labels=array([1317, 1793], dtype=uint16), N_frames_calcium_positive=2),
+  415: TCell(labels=[415], calcium_labels=array([896], dtype=uint16), N_frames_calcium_positive=1),
+  429: TCell(labels=[429], calcium_labels=array([1257], dtype=uint16), N_frames_calcium_positive=1),
+  430: TCell(labels=[430], calcium_labels=array([946], dtype=uint16), N_frames_calcium_positive=1),
+  436: TCell(labels=[436], calcium_labels=array([1304], dtype=uint16), N_frames_calcium_positive=1),
+  446: TCell(labels=[446], calcium_labels=array([1143], dtype=uint16), N_frames_calcium_positive=1),
+  465: TCell(labels=[465], calcium_labels=array([936], dtype=uint16), N_frames_calcium_positive=1),
+  474: TCell(labels=[474], calcium_labels=array([1193], dtype=uint16), N_frames_calcium_positive=1),
+  475: TCell(labels=[475], calcium_labels=array([1207, 1705], dtype=uint16), N_frames_calcium_positive=2),
+  477: TCell(labels=[477], calcium_labels=array([1057, 1564], dtype=uint16), N_frames_calcium_positive=2),
+  483: TCell(labels=[483], calcium_labels=array([1030, 1032], dtype=uint16), N_frames_calcium_positive=1),
+  486: TCell(labels=[486], calcium_labels=array([1315, 1793], dtype=uint16), N_frames_calcium_positive=2),
+  513: TCell(labels=[513], calcium_labels=array([1207], dtype=uint16), N_frames_calcium_positive=1),
+  515: TCell(labels=[515], calcium_labels=array([ 880, 1353, 1848], dtype=uint16), N_frames_calcium_positive=3),
+  532: TCell(labels=[532], calcium_labels=array([984], dtype=uint16), N_frames_calcium_positive=1),
+  542: TCell(labels=[542], calcium_labels=array([1287, 1771, 2240], dtype=uint16), N_frames_calcium_positive=3),
+  562: TCell(labels=[562], calcium_labels=array([1083, 1592], dtype=uint16), N_frames_calcium_positive=2),
+  585: TCell(labels=[585], calcium_labels=array([1147, 1640], dtype=uint16), N_frames_calcium_positive=2),
+  588: TCell(labels=[588], calcium_labels=array([1029, 1545], dtype=uint16), N_frames_calcium_positive=2),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  650: TCell(labels=[650], calcium_labels=array([1059], dtype=uint16), N_frames_calcium_positive=1),
+  652: TCell(labels=[652], calcium_labels=array([ 965, 1448], dtype=uint16), N_frames_calcium_positive=2),
+  654: TCell(labels=[654], calcium_labels=array([1285, 1772, 2227], dtype=uint16), N_frames_calcium_positive=3),
+  658: TCell(labels=[658], calcium_labels=array([1024, 1516], dtype=uint16), N_frames_calcium_positive=2),
+  670: TCell(labels=[670], calcium_labels=array([ 935, 1416], dtype=uint16), N_frames_calcium_positive=2)},
+ 21: {},
+ 22: {},
+ 23: {},
+ 24: {},
+ 25: {},
+ 26: {},
+ 27: {},
+ 28: {},
+ 29: {},
+ 30: {11: TCell(labels=[11], calcium_labels=array([1264, 1759], dtype=uint16), N_frames_calcium_positive=2),
+  17: TCell(labels=[17], calcium_labels=array([ 879, 1349], dtype=uint16), N_frames_calcium_positive=2),
+  23: TCell(labels=[23], calcium_labels=array([ 175,  614, 1025, 1533, 1998], dtype=uint16), N_frames_calcium_positive=5),
+  30: TCell(labels=[30], calcium_labels=array([  49,  497,  905, 1381], dtype=uint16), N_frames_calcium_positive=4),
+  36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  44: TCell(labels=[44], calcium_labels=array([1200, 1693, 2134, 2591, 2604, 3081], dtype=uint16), N_frames_calcium_positive=5),
+  58: TCell(labels=[58], calcium_labels=array([ 353,  762, 1241, 1722, 2171], dtype=uint16), N_frames_calcium_positive=5),
+  130: TCell(labels=[130], calcium_labels=array([1424], dtype=uint16), N_frames_calcium_positive=1),
+  138: TCell(labels=[138], calcium_labels=array([ 178,  617, 1030, 1534, 1554], dtype=uint16), N_frames_calcium_positive=4),
+  171: TCell(labels=[171], calcium_labels=array([1581], dtype=uint16), N_frames_calcium_positive=1),
+  197: TCell(labels=[197], calcium_labels=array([1003, 1517], dtype=uint16), N_frames_calcium_positive=2),
+  205: TCell(labels=[205], calcium_labels=array([ 668, 1057, 1564, 1576, 2022, 2494, 2506], dtype=uint16), N_frames_calcium_positive=5),
+  210: TCell(labels=[210], calcium_labels=array([ 748, 1193, 1699, 2134, 2591], dtype=uint16), N_frames_calcium_positive=5),
+  236: TCell(labels=[236], calcium_labels=array([ 519,  935, 1409], dtype=uint16), N_frames_calcium_positive=3),
+  249: TCell(labels=[249], calcium_labels=array([1683, 1693], dtype=uint16), N_frames_calcium_positive=1),
+  278: TCell(labels=[278], calcium_labels=array([ 637, 1048, 1054, 1563], dtype=uint16), N_frames_calcium_positive=3),
+  331: TCell(labels=[331], calcium_labels=array([ 656, 1057, 1564, 2022, 2494], dtype=uint16), N_frames_calcium_positive=5),
+  342: TCell(labels=[342], calcium_labels=array([ 660, 1051, 1554], dtype=uint16), N_frames_calcium_positive=3),
+  374: TCell(labels=[374], calcium_labels=array([ 820, 1281, 1769, 2233, 2684], dtype=uint16), N_frames_calcium_positive=5),
+  385: TCell(labels=[385], calcium_labels=array([ 575,  976, 1458], dtype=uint16), N_frames_calcium_positive=3),
+  410: TCell(labels=[410], calcium_labels=array([1317, 1793], dtype=uint16), N_frames_calcium_positive=2),
+  475: TCell(labels=[475], calcium_labels=array([1207, 1705], dtype=uint16), N_frames_calcium_positive=2),
+  477: TCell(labels=[477], calcium_labels=array([1057, 1564], dtype=uint16), N_frames_calcium_positive=2),
+  486: TCell(labels=[486], calcium_labels=array([1315, 1793], dtype=uint16), N_frames_calcium_positive=2),
+  500: TCell(labels=[500], calcium_labels=array([1533, 1998], dtype=uint16), N_frames_calcium_positive=2),
+  515: TCell(labels=[515], calcium_labels=array([ 880, 1353, 1848], dtype=uint16), N_frames_calcium_positive=3),
+  538: TCell(labels=[538], calcium_labels=array([1433], dtype=uint16), N_frames_calcium_positive=1),
+  542: TCell(labels=[542], calcium_labels=array([1287, 1771, 2240], dtype=uint16), N_frames_calcium_positive=3),
+  545: TCell(labels=[545], calcium_labels=array([1581], dtype=uint16), N_frames_calcium_positive=1),
+  562: TCell(labels=[562], calcium_labels=array([1083, 1592], dtype=uint16), N_frames_calcium_positive=2),
+  574: TCell(labels=[574], calcium_labels=array([1504], dtype=uint16), N_frames_calcium_positive=1),
+  585: TCell(labels=[585], calcium_labels=array([1147, 1640], dtype=uint16), N_frames_calcium_positive=2),
+  588: TCell(labels=[588], calcium_labels=array([1029, 1545], dtype=uint16), N_frames_calcium_positive=2),
+  591: TCell(labels=[591], calcium_labels=array([1742], dtype=uint16), N_frames_calcium_positive=1),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  625: TCell(labels=[625], calcium_labels=array([1622], dtype=uint16), N_frames_calcium_positive=1),
+  652: TCell(labels=[652], calcium_labels=array([ 965, 1448], dtype=uint16), N_frames_calcium_positive=2),
+  653: TCell(labels=[653], calcium_labels=array([1506, 1968], dtype=uint16), N_frames_calcium_positive=2),
+  654: TCell(labels=[654], calcium_labels=array([1285, 1772, 2227], dtype=uint16), N_frames_calcium_positive=3),
+  658: TCell(labels=[658], calcium_labels=array([1024, 1516], dtype=uint16), N_frames_calcium_positive=2),
+  670: TCell(labels=[670], calcium_labels=array([ 935, 1416], dtype=uint16), N_frames_calcium_positive=2),
+  672: TCell(labels=[672], calcium_labels=array([1602], dtype=uint16), N_frames_calcium_positive=1),
+  692: TCell(labels=[692], calcium_labels=array([1585], dtype=uint16), N_frames_calcium_positive=1),
+  706: TCell(labels=[706], calcium_labels=array([1681, 1683], dtype=uint16), N_frames_calcium_positive=1),
+  707: TCell(labels=[707], calcium_labels=array([1387], dtype=uint16), N_frames_calcium_positive=1),
+  723: TCell(labels=[723], calcium_labels=array([1622], dtype=uint16), N_frames_calcium_positive=1),
+  726: TCell(labels=[726], calcium_labels=array([1428], dtype=uint16), N_frames_calcium_positive=1),
+  742: TCell(labels=[742], calcium_labels=array([1775], dtype=uint16), N_frames_calcium_positive=1),
+  743: TCell(labels=[743], calcium_labels=array([1756, 2207], dtype=uint16), N_frames_calcium_positive=2),
+  751: TCell(labels=[751], calcium_labels=array([1563], dtype=uint16), N_frames_calcium_positive=1),
+  762: TCell(labels=[762], calcium_labels=array([1516], dtype=uint16), N_frames_calcium_positive=1),
+  765: TCell(labels=[765], calcium_labels=array([1391, 1886], dtype=uint16), N_frames_calcium_positive=2),
+  770: TCell(labels=[770], calcium_labels=array([1421], dtype=uint16), N_frames_calcium_positive=1),
+  774: TCell(labels=[774], calcium_labels=array([1746], dtype=uint16), N_frames_calcium_positive=1),
+  775: TCell(labels=[775], calcium_labels=array([1503], dtype=uint16), N_frames_calcium_positive=1),
+  788: TCell(labels=[788], calcium_labels=array([1357], dtype=uint16), N_frames_calcium_positive=1),
+  796: TCell(labels=[796], calcium_labels=array([1428, 1903, 2391, 2827], dtype=uint16), N_frames_calcium_positive=4),
+  799: TCell(labels=[799], calcium_labels=array([1653, 2095], dtype=uint16), N_frames_calcium_positive=2),
+  802: TCell(labels=[802], calcium_labels=array([1761], dtype=uint16), N_frames_calcium_positive=1),
+  805: TCell(labels=[805], calcium_labels=array([1826], dtype=uint16), N_frames_calcium_positive=1),
+  807: TCell(labels=[807], calcium_labels=array([1793], dtype=uint16), N_frames_calcium_positive=1),
+  811: TCell(labels=[811], calcium_labels=array([1740], dtype=uint16), N_frames_calcium_positive=1),
+  822: TCell(labels=[822], calcium_labels=array([1642, 2102], dtype=uint16), N_frames_calcium_positive=2),
+  841: TCell(labels=[841], calcium_labels=array([1382, 1872], dtype=uint16), N_frames_calcium_positive=2),
+  854: TCell(labels=[854], calcium_labels=array([1688], dtype=uint16), N_frames_calcium_positive=1),
+  859: TCell(labels=[859], calcium_labels=array([1693, 2157, 2644], dtype=uint16), N_frames_calcium_positive=3),
+  863: TCell(labels=[863], calcium_labels=array([1681, 2119, 2603, 2604], dtype=uint16), N_frames_calcium_positive=3),
+  866: TCell(labels=[866], calcium_labels=array([1416, 1896], dtype=uint16), N_frames_calcium_positive=2),
+  882: TCell(labels=[882], calcium_labels=array([1771, 2228, 2665], dtype=uint16), N_frames_calcium_positive=3),
+  889: TCell(labels=[889], calcium_labels=array([1677], dtype=uint16), N_frames_calcium_positive=1),
+  914: TCell(labels=[914], calcium_labels=array([1605, 2067, 2547], dtype=uint16), N_frames_calcium_positive=3),
+  921: TCell(labels=[921], calcium_labels=array([1516, 1981], dtype=uint16), N_frames_calcium_positive=2),
+  948: TCell(labels=[948], calcium_labels=array([1429, 1904], dtype=uint16), N_frames_calcium_positive=2),
+  953: TCell(labels=[953], calcium_labels=array([1517, 1534], dtype=uint16), N_frames_calcium_positive=1)},
+ 31: {},
+ 32: {},
+ 33: {},
+ 34: {},
+ 35: {},
+ 36: {},
+ 37: {},
+ 38: {},
+ 39: {},
+ 40: {23: TCell(labels=[23], calcium_labels=array([ 175,  614, 1025, 1533, 1998], dtype=uint16), N_frames_calcium_positive=5),
+  36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  44: TCell(labels=[44], calcium_labels=array([1200, 1693, 2134, 2591, 2604, 3081], dtype=uint16), N_frames_calcium_positive=5),
+  58: TCell(labels=[58], calcium_labels=array([ 353,  762, 1241, 1722, 2171], dtype=uint16), N_frames_calcium_positive=5),
+  89: TCell(labels=[89], calcium_labels=array([2041], dtype=uint16), N_frames_calcium_positive=1),
+  205: TCell(labels=[205], calcium_labels=array([ 668, 1057, 1564, 1576, 2022, 2494, 2506], dtype=uint16), N_frames_calcium_positive=5),
+  210: TCell(labels=[210], calcium_labels=array([ 748, 1193, 1699, 2134, 2591], dtype=uint16), N_frames_calcium_positive=5),
+  226: TCell(labels=[226], calcium_labels=array([2274], dtype=uint16), N_frames_calcium_positive=1),
+  331: TCell(labels=[331], calcium_labels=array([ 656, 1057, 1564, 2022, 2494], dtype=uint16), N_frames_calcium_positive=5),
+  374: TCell(labels=[374], calcium_labels=array([ 820, 1281, 1769, 2233, 2684], dtype=uint16), N_frames_calcium_positive=5),
+  411: TCell(labels=[411], calcium_labels=array([2035], dtype=uint16), N_frames_calcium_positive=1),
+  446: TCell(labels=[446], calcium_labels=array([2078, 2563], dtype=uint16), N_frames_calcium_positive=2),
+  500: TCell(labels=[500], calcium_labels=array([1533, 1998], dtype=uint16), N_frames_calcium_positive=2),
+  515: TCell(labels=[515], calcium_labels=array([ 880, 1353, 1848], dtype=uint16), N_frames_calcium_positive=3),
+  542: TCell(labels=[542], calcium_labels=array([1287, 1771, 2240], dtype=uint16), N_frames_calcium_positive=3),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  653: TCell(labels=[653], calcium_labels=array([1506, 1968], dtype=uint16), N_frames_calcium_positive=2),
+  654: TCell(labels=[654], calcium_labels=array([1285, 1772, 2227], dtype=uint16), N_frames_calcium_positive=3),
+  671: TCell(labels=[671], calcium_labels=array([2274], dtype=uint16), N_frames_calcium_positive=1),
+  678: TCell(labels=[678], calcium_labels=array([1869], dtype=uint16), N_frames_calcium_positive=1),
+  736: TCell(labels=[736], calcium_labels=array([2007], dtype=uint16), N_frames_calcium_positive=1),
+  743: TCell(labels=[743], calcium_labels=array([1756, 2207], dtype=uint16), N_frames_calcium_positive=2),
+  761: TCell(labels=[761], calcium_labels=array([1882], dtype=uint16), N_frames_calcium_positive=1),
+  765: TCell(labels=[765], calcium_labels=array([1391, 1886], dtype=uint16), N_frames_calcium_positive=2),
+  796: TCell(labels=[796], calcium_labels=array([1428, 1903, 2391, 2827], dtype=uint16), N_frames_calcium_positive=4),
+  799: TCell(labels=[799], calcium_labels=array([1653, 2095], dtype=uint16), N_frames_calcium_positive=2),
+  801: TCell(labels=[801], calcium_labels=array([2284], dtype=uint16), N_frames_calcium_positive=1),
+  822: TCell(labels=[822], calcium_labels=array([1642, 2102], dtype=uint16), N_frames_calcium_positive=2),
+  841: TCell(labels=[841], calcium_labels=array([1382, 1872], dtype=uint16), N_frames_calcium_positive=2),
+  859: TCell(labels=[859], calcium_labels=array([1693, 2157, 2644], dtype=uint16), N_frames_calcium_positive=3),
+  863: TCell(labels=[863], calcium_labels=array([1681, 2119, 2603, 2604], dtype=uint16), N_frames_calcium_positive=3),
+  865: TCell(labels=[865], calcium_labels=array([1857], dtype=uint16), N_frames_calcium_positive=1),
+  866: TCell(labels=[866], calcium_labels=array([1416, 1896], dtype=uint16), N_frames_calcium_positive=2),
+  882: TCell(labels=[882], calcium_labels=array([1771, 2228, 2665], dtype=uint16), N_frames_calcium_positive=3),
+  914: TCell(labels=[914], calcium_labels=array([1605, 2067, 2547], dtype=uint16), N_frames_calcium_positive=3),
+  921: TCell(labels=[921], calcium_labels=array([1516, 1981], dtype=uint16), N_frames_calcium_positive=2),
+  946: TCell(labels=[946], calcium_labels=array([2056], dtype=uint16), N_frames_calcium_positive=1),
+  948: TCell(labels=[948], calcium_labels=array([1429, 1904], dtype=uint16), N_frames_calcium_positive=2),
+  960: TCell(labels=[960], calcium_labels=array([2135, 2599, 2609], dtype=uint16), N_frames_calcium_positive=2),
+  961: TCell(labels=[961], calcium_labels=array([2069], dtype=uint16), N_frames_calcium_positive=1),
+  976: TCell(labels=[976], calcium_labels=array([2057, 2536, 2995, 3488], dtype=uint16), N_frames_calcium_positive=4),
+  977: TCell(labels=[977], calcium_labels=array([2274], dtype=uint16), N_frames_calcium_positive=1),
+  980: TCell(labels=[980], calcium_labels=array([1928, 1951], dtype=uint16), N_frames_calcium_positive=1),
+  983: TCell(labels=[983], calcium_labels=array([1894], dtype=uint16), N_frames_calcium_positive=1),
+  991: TCell(labels=[991], calcium_labels=array([1982], dtype=uint16), N_frames_calcium_positive=1),
+  1003: TCell(labels=[1003], calcium_labels=array([2228], dtype=uint16), N_frames_calcium_positive=1),
+  1021: TCell(labels=[1021], calcium_labels=array([2068], dtype=uint16), N_frames_calcium_positive=1),
+  1033: TCell(labels=[1033], calcium_labels=array([2266], dtype=uint16), N_frames_calcium_positive=1),
+  1042: TCell(labels=[1042], calcium_labels=array([2049, 2520, 2997], dtype=uint16), N_frames_calcium_positive=3),
+  1056: TCell(labels=[1056], calcium_labels=array([2031, 2510, 2979, 2985], dtype=uint16), N_frames_calcium_positive=3),
+  1058: TCell(labels=[1058], calcium_labels=array([1882], dtype=uint16), N_frames_calcium_positive=1),
+  1063: TCell(labels=[1063], calcium_labels=array([2298], dtype=uint16), N_frames_calcium_positive=1),
+  1064: TCell(labels=[1064], calcium_labels=array([2233, 2682, 3191, 3703], dtype=uint16), N_frames_calcium_positive=4),
+  1066: TCell(labels=[1066], calcium_labels=array([1910], dtype=uint16), N_frames_calcium_positive=1),
+  1069: TCell(labels=[1069], calcium_labels=array([2247], dtype=uint16), N_frames_calcium_positive=1),
+  1083: TCell(labels=[1083], calcium_labels=array([2008, 2482, 2950], dtype=uint16), N_frames_calcium_positive=3),
+  1088: TCell(labels=[1088], calcium_labels=array([2171, 2633, 3131], dtype=uint16), N_frames_calcium_positive=3),
+  1130: TCell(labels=[1130], calcium_labels=array([1913, 2405], dtype=uint16), N_frames_calcium_positive=2),
+  1135: TCell(labels=[1135], calcium_labels=array([2055, 2516], dtype=uint16), N_frames_calcium_positive=2),
+  1155: TCell(labels=[1155], calcium_labels=array([1956], dtype=uint16), N_frames_calcium_positive=1),
+  1156: TCell(labels=[1156], calcium_labels=array([2119, 2603], dtype=uint16), N_frames_calcium_positive=2),
+  1174: TCell(labels=[1174], calcium_labels=array([1920], dtype=uint16), N_frames_calcium_positive=1),
+  1188: TCell(labels=[1188], calcium_labels=array([2222], dtype=uint16), N_frames_calcium_positive=1),
+  1191: TCell(labels=[1191], calcium_labels=array([2233], dtype=uint16), N_frames_calcium_positive=1),
+  1199: TCell(labels=[1199], calcium_labels=array([2008, 2482], dtype=uint16), N_frames_calcium_positive=2),
+  1204: TCell(labels=[1204], calcium_labels=array([2042, 2518], dtype=uint16), N_frames_calcium_positive=2),
+  1212: TCell(labels=[1212], calcium_labels=array([1985, 2455, 2933, 3435, 3960], dtype=uint16), N_frames_calcium_positive=5),
+  1216: TCell(labels=[1216], calcium_labels=array([1917, 2404], dtype=uint16), N_frames_calcium_positive=2),
+  1222: TCell(labels=[1222], calcium_labels=array([2007, 2021], dtype=uint16), N_frames_calcium_positive=1),
+  1226: TCell(labels=[1226], calcium_labels=array([2266, 2715], dtype=uint16), N_frames_calcium_positive=2),
+  1241: TCell(labels=[1241], calcium_labels=array([2042, 2514], dtype=uint16), N_frames_calcium_positive=2),
+  1243: TCell(labels=[1243], calcium_labels=array([2172, 2611], dtype=uint16), N_frames_calcium_positive=2),
+  1252: TCell(labels=[1252], calcium_labels=array([2087, 2578], dtype=uint16), N_frames_calcium_positive=2)},
+ 41: {},
+ 42: {},
+ 43: {},
+ 44: {},
+ 45: {},
+ 46: {},
+ 47: {},
+ 48: {},
+ 49: {},
+ 50: {36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  44: TCell(labels=[44], calcium_labels=array([1200, 1693, 2134, 2591, 2604, 3081], dtype=uint16), N_frames_calcium_positive=5),
+  63: TCell(labels=[63], calcium_labels=array([2512], dtype=uint16), N_frames_calcium_positive=1),
+  205: TCell(labels=[205], calcium_labels=array([ 668, 1057, 1564, 1576, 2022, 2494, 2506], dtype=uint16), N_frames_calcium_positive=5),
+  210: TCell(labels=[210], calcium_labels=array([ 748, 1193, 1699, 2134, 2591], dtype=uint16), N_frames_calcium_positive=5),
+  331: TCell(labels=[331], calcium_labels=array([ 656, 1057, 1564, 2022, 2494], dtype=uint16), N_frames_calcium_positive=5),
+  374: TCell(labels=[374], calcium_labels=array([ 820, 1281, 1769, 2233, 2684], dtype=uint16), N_frames_calcium_positive=5),
+  446: TCell(labels=[446], calcium_labels=array([2078, 2563], dtype=uint16), N_frames_calcium_positive=2),
+  591: TCell(labels=[591], calcium_labels=array([2652, 3159], dtype=uint16), N_frames_calcium_positive=2),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  672: TCell(labels=[672], calcium_labels=array([2553, 3018], dtype=uint16), N_frames_calcium_positive=2),
+  796: TCell(labels=[796], calcium_labels=array([1428, 1903, 2391, 2827], dtype=uint16), N_frames_calcium_positive=4),
+  807: TCell(labels=[807], calcium_labels=array([2723], dtype=uint16), N_frames_calcium_positive=1),
+  859: TCell(labels=[859], calcium_labels=array([1693, 2157, 2644], dtype=uint16), N_frames_calcium_positive=3),
+  863: TCell(labels=[863], calcium_labels=array([1681, 2119, 2603, 2604], dtype=uint16), N_frames_calcium_positive=3),
+  882: TCell(labels=[882], calcium_labels=array([1771, 2228, 2665], dtype=uint16), N_frames_calcium_positive=3),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  914: TCell(labels=[914], calcium_labels=array([1605, 2067, 2547], dtype=uint16), N_frames_calcium_positive=3),
+  960: TCell(labels=[960], calcium_labels=array([2135, 2599, 2609], dtype=uint16), N_frames_calcium_positive=2),
+  976: TCell(labels=[976], calcium_labels=array([2057, 2536, 2995, 3488], dtype=uint16), N_frames_calcium_positive=4),
+  978: TCell(labels=[978], calcium_labels=array([2347], dtype=uint16), N_frames_calcium_positive=1),
+  1042: TCell(labels=[1042], calcium_labels=array([2049, 2520, 2997], dtype=uint16), N_frames_calcium_positive=3),
+  1047: TCell(labels=[1047], calcium_labels=array([2328], dtype=uint16), N_frames_calcium_positive=1),
+  1056: TCell(labels=[1056], calcium_labels=array([2031, 2510, 2979, 2985], dtype=uint16), N_frames_calcium_positive=3),
+  1059: TCell(labels=[1059], calcium_labels=array([2502, 2969, 2974], dtype=uint16), N_frames_calcium_positive=2),
+  1064: TCell(labels=[1064], calcium_labels=array([2233, 2682, 3191, 3703], dtype=uint16), N_frames_calcium_positive=4),
+  1083: TCell(labels=[1083], calcium_labels=array([2008, 2482, 2950], dtype=uint16), N_frames_calcium_positive=3),
+  1088: TCell(labels=[1088], calcium_labels=array([2171, 2633, 3131], dtype=uint16), N_frames_calcium_positive=3),
+  1130: TCell(labels=[1130], calcium_labels=array([1913, 2405], dtype=uint16), N_frames_calcium_positive=2),
+  1135: TCell(labels=[1135], calcium_labels=array([2055, 2516], dtype=uint16), N_frames_calcium_positive=2),
+  1154: TCell(labels=[1154], calcium_labels=array([2707], dtype=uint16), N_frames_calcium_positive=1),
+  1156: TCell(labels=[1156], calcium_labels=array([2119, 2603], dtype=uint16), N_frames_calcium_positive=2),
+  1186: TCell(labels=[1186], calcium_labels=array([2732], dtype=uint16), N_frames_calcium_positive=1),
+  1199: TCell(labels=[1199], calcium_labels=array([2008, 2482], dtype=uint16), N_frames_calcium_positive=2),
+  1204: TCell(labels=[1204], calcium_labels=array([2042, 2518], dtype=uint16), N_frames_calcium_positive=2),
+  1212: TCell(labels=[1212], calcium_labels=array([1985, 2455, 2933, 3435, 3960], dtype=uint16), N_frames_calcium_positive=5),
+  1216: TCell(labels=[1216], calcium_labels=array([1917, 2404], dtype=uint16), N_frames_calcium_positive=2),
+  1223: TCell(labels=[1223], calcium_labels=array([2732, 3230], dtype=uint16), N_frames_calcium_positive=2),
+  1226: TCell(labels=[1226], calcium_labels=array([2266, 2715], dtype=uint16), N_frames_calcium_positive=2),
+  1241: TCell(labels=[1241], calcium_labels=array([2042, 2514], dtype=uint16), N_frames_calcium_positive=2),
+  1243: TCell(labels=[1243], calcium_labels=array([2172, 2611], dtype=uint16), N_frames_calcium_positive=2),
+  1252: TCell(labels=[1252], calcium_labels=array([2087, 2578], dtype=uint16), N_frames_calcium_positive=2),
+  1266: TCell(labels=[1266], calcium_labels=array([2550], dtype=uint16), N_frames_calcium_positive=1),
+  1273: TCell(labels=[1273], calcium_labels=array([2754, 3262], dtype=uint16), N_frames_calcium_positive=2),
+  1307: TCell(labels=[1307], calcium_labels=array([2380, 2390], dtype=uint16), N_frames_calcium_positive=1),
+  1323: TCell(labels=[1323], calcium_labels=array([2663], dtype=uint16), N_frames_calcium_positive=1),
+  1343: TCell(labels=[1343], calcium_labels=array([2646], dtype=uint16), N_frames_calcium_positive=1),
+  1361: TCell(labels=[1361], calcium_labels=array([2511, 2987], dtype=uint16), N_frames_calcium_positive=2),
+  1370: TCell(labels=[1370], calcium_labels=array([2507, 2980], dtype=uint16), N_frames_calcium_positive=2),
+  1394: TCell(labels=[1394], calcium_labels=array([2539, 3013, 3499], dtype=uint16), N_frames_calcium_positive=3),
+  1406: TCell(labels=[1406], calcium_labels=array([2638, 2640, 3136], dtype=uint16), N_frames_calcium_positive=2),
+  1418: TCell(labels=[1418], calcium_labels=array([2720, 3223], dtype=uint16), N_frames_calcium_positive=2),
+  1419: TCell(labels=[1419], calcium_labels=array([2720], dtype=uint16), N_frames_calcium_positive=1),
+  1431: TCell(labels=[1431], calcium_labels=array([2736, 3238, 3758, 4266, 4740], dtype=uint16), N_frames_calcium_positive=5),
+  1443: TCell(labels=[1443], calcium_labels=array([2677], dtype=uint16), N_frames_calcium_positive=1),
+  1448: TCell(labels=[1448], calcium_labels=array([2405, 2856, 3370, 3880], dtype=uint16), N_frames_calcium_positive=4),
+  1449: TCell(labels=[1449], calcium_labels=array([2366, 2373, 2806], dtype=uint16), N_frames_calcium_positive=2),
+  1464: TCell(labels=[1464], calcium_labels=array([2599, 3079], dtype=uint16), N_frames_calcium_positive=2),
+  1499: TCell(labels=[1499], calcium_labels=array([2564], dtype=uint16), N_frames_calcium_positive=1),
+  1502: TCell(labels=[1502], calcium_labels=array([2553, 3018, 3029], dtype=uint16), N_frames_calcium_positive=2),
+  1504: TCell(labels=[1504], calcium_labels=array([2390, 2830], dtype=uint16), N_frames_calcium_positive=2),
+  1507: TCell(labels=[1507], calcium_labels=array([2677, 3174], dtype=uint16), N_frames_calcium_positive=2),
+  1508: TCell(labels=[1508], calcium_labels=array([2514, 2518], dtype=uint16), N_frames_calcium_positive=1),
+  1513: TCell(labels=[1513], calcium_labels=array([2355], dtype=uint16), N_frames_calcium_positive=1),
+  1514: TCell(labels=[1514], calcium_labels=array([2684, 3191], dtype=uint16), N_frames_calcium_positive=2),
+  1515: TCell(labels=[1515], calcium_labels=array([2736], dtype=uint16), N_frames_calcium_positive=1),
+  1516: TCell(labels=[1516], calcium_labels=array([2539], dtype=uint16), N_frames_calcium_positive=1),
+  1532: TCell(labels=[1532], calcium_labels=array([2644], dtype=uint16), N_frames_calcium_positive=1),
+  1555: TCell(labels=[1555], calcium_labels=array([2514], dtype=uint16), N_frames_calcium_positive=1),
+  1557: TCell(labels=[1557], calcium_labels=array([2677, 3174], dtype=uint16), N_frames_calcium_positive=2)},
+ 51: {},
+ 52: {},
+ 53: {},
+ 54: {},
+ 55: {},
+ 56: {},
+ 57: {},
+ 58: {},
+ 59: {},
+ 60: {36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  44: TCell(labels=[44], calcium_labels=array([1200, 1693, 2134, 2591, 2604, 3081], dtype=uint16), N_frames_calcium_positive=5),
+  76: TCell(labels=[76], calcium_labels=array([3003], dtype=uint16), N_frames_calcium_positive=1),
+  216: TCell(labels=[216], calcium_labels=array([3193], dtype=uint16), N_frames_calcium_positive=1),
+  500: TCell(labels=[500], calcium_labels=array([2918], dtype=uint16), N_frames_calcium_positive=1),
+  574: TCell(labels=[574], calcium_labels=array([2897], dtype=uint16), N_frames_calcium_positive=1),
+  591: TCell(labels=[591], calcium_labels=array([2652, 3159], dtype=uint16), N_frames_calcium_positive=2),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  672: TCell(labels=[672], calcium_labels=array([2553, 3018], dtype=uint16), N_frames_calcium_positive=2),
+  761: TCell(labels=[761], calcium_labels=array([2806], dtype=uint16), N_frames_calcium_positive=1),
+  796: TCell(labels=[796], calcium_labels=array([1428, 1903, 2391, 2827], dtype=uint16), N_frames_calcium_positive=4),
+  854: TCell(labels=[854], calcium_labels=array([3069], dtype=uint16), N_frames_calcium_positive=1),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  976: TCell(labels=[976], calcium_labels=array([2057, 2536, 2995, 3488], dtype=uint16), N_frames_calcium_positive=4),
+  1042: TCell(labels=[1042], calcium_labels=array([2049, 2520, 2997], dtype=uint16), N_frames_calcium_positive=3),
+  1056: TCell(labels=[1056], calcium_labels=array([2031, 2510, 2979, 2985], dtype=uint16), N_frames_calcium_positive=3),
+  1059: TCell(labels=[1059], calcium_labels=array([2502, 2969, 2974], dtype=uint16), N_frames_calcium_positive=2),
+  1064: TCell(labels=[1064], calcium_labels=array([2233, 2682, 3191, 3703], dtype=uint16), N_frames_calcium_positive=4),
+  1083: TCell(labels=[1083], calcium_labels=array([2008, 2482, 2950], dtype=uint16), N_frames_calcium_positive=3),
+  1086: TCell(labels=[1086], calcium_labels=array([2930], dtype=uint16), N_frames_calcium_positive=1),
+  1088: TCell(labels=[1088], calcium_labels=array([2171, 2633, 3131], dtype=uint16), N_frames_calcium_positive=3),
+  1212: TCell(labels=[1212], calcium_labels=array([1985, 2455, 2933, 3435, 3960], dtype=uint16), N_frames_calcium_positive=5),
+  1223: TCell(labels=[1223], calcium_labels=array([2732, 3230], dtype=uint16), N_frames_calcium_positive=2),
+  1273: TCell(labels=[1273], calcium_labels=array([2754, 3262], dtype=uint16), N_frames_calcium_positive=2),
+  1351: TCell(labels=[1351], calcium_labels=array([2947], dtype=uint16), N_frames_calcium_positive=1),
+  1361: TCell(labels=[1361], calcium_labels=array([2511, 2987], dtype=uint16), N_frames_calcium_positive=2),
+  1370: TCell(labels=[1370], calcium_labels=array([2507, 2980], dtype=uint16), N_frames_calcium_positive=2),
+  1381: TCell(labels=[1381], calcium_labels=array([2945, 3437], dtype=uint16), N_frames_calcium_positive=2),
+  1394: TCell(labels=[1394], calcium_labels=array([2539, 3013, 3499], dtype=uint16), N_frames_calcium_positive=3),
+  1406: TCell(labels=[1406], calcium_labels=array([2638, 2640, 3136], dtype=uint16), N_frames_calcium_positive=2),
+  1418: TCell(labels=[1418], calcium_labels=array([2720, 3223], dtype=uint16), N_frames_calcium_positive=2),
+  1431: TCell(labels=[1431], calcium_labels=array([2736, 3238, 3758, 4266, 4740], dtype=uint16), N_frames_calcium_positive=5),
+  1440: TCell(labels=[1440], calcium_labels=array([3157, 3674], dtype=uint16), N_frames_calcium_positive=2),
+  1448: TCell(labels=[1448], calcium_labels=array([2405, 2856, 3370, 3880], dtype=uint16), N_frames_calcium_positive=4),
+  1449: TCell(labels=[1449], calcium_labels=array([2366, 2373, 2806], dtype=uint16), N_frames_calcium_positive=2),
+  1464: TCell(labels=[1464], calcium_labels=array([2599, 3079], dtype=uint16), N_frames_calcium_positive=2),
+  1502: TCell(labels=[1502], calcium_labels=array([2553, 3018, 3029], dtype=uint16), N_frames_calcium_positive=2),
+  1504: TCell(labels=[1504], calcium_labels=array([2390, 2830], dtype=uint16), N_frames_calcium_positive=2),
+  1507: TCell(labels=[1507], calcium_labels=array([2677, 3174], dtype=uint16), N_frames_calcium_positive=2),
+  1514: TCell(labels=[1514], calcium_labels=array([2684, 3191], dtype=uint16), N_frames_calcium_positive=2),
+  1557: TCell(labels=[1557], calcium_labels=array([2677, 3174], dtype=uint16), N_frames_calcium_positive=2),
+  1566: TCell(labels=[1566], calcium_labels=array([2887, 3399], dtype=uint16), N_frames_calcium_positive=2),
+  1600: TCell(labels=[1600], calcium_labels=array([2787, 3278], dtype=uint16), N_frames_calcium_positive=2),
+  1606: TCell(labels=[1606], calcium_labels=array([2852, 3350], dtype=uint16), N_frames_calcium_positive=2),
+  1617: TCell(labels=[1617], calcium_labels=array([2930, 3422, 3927, 4425, 4878], dtype=uint16), N_frames_calcium_positive=5),
+  1619: TCell(labels=[1619], calcium_labels=array([2856], dtype=uint16), N_frames_calcium_positive=1),
+  1628: TCell(labels=[1628], calcium_labels=array([2982], dtype=uint16), N_frames_calcium_positive=1),
+  1631: TCell(labels=[1631], calcium_labels=array([3176], dtype=uint16), N_frames_calcium_positive=1),
+  1650: TCell(labels=[1650], calcium_labels=array([2839, 2853, 3342], dtype=uint16), N_frames_calcium_positive=2),
+  1654: TCell(labels=[1654], calcium_labels=array([2826, 3319, 3838, 4370], dtype=uint16), N_frames_calcium_positive=4),
+  1655: TCell(labels=[1655], calcium_labels=array([2867], dtype=uint16), N_frames_calcium_positive=1),
+  1657: TCell(labels=[1657], calcium_labels=array([3019], dtype=uint16), N_frames_calcium_positive=1),
+  1658: TCell(labels=[1658], calcium_labels=array([3062], dtype=uint16), N_frames_calcium_positive=1),
+  1661: TCell(labels=[1661], calcium_labels=array([3202], dtype=uint16), N_frames_calcium_positive=1),
+  1689: TCell(labels=[1689], calcium_labels=array([3251], dtype=uint16), N_frames_calcium_positive=1),
+  1691: TCell(labels=[1691], calcium_labels=array([3223, 3733, 4220], dtype=uint16), N_frames_calcium_positive=3),
+  1700: TCell(labels=[1700], calcium_labels=array([3029, 3543, 4031], dtype=uint16), N_frames_calcium_positive=3),
+  1702: TCell(labels=[1702], calcium_labels=array([2883], dtype=uint16), N_frames_calcium_positive=1),
+  1728: TCell(labels=[1728], calcium_labels=array([3023, 3511, 4023], dtype=uint16), N_frames_calcium_positive=3),
+  1749: TCell(labels=[1749], calcium_labels=array([3193], dtype=uint16), N_frames_calcium_positive=1),
+  1754: TCell(labels=[1754], calcium_labels=array([3081, 3564, 4091], dtype=uint16), N_frames_calcium_positive=3),
+  1765: TCell(labels=[1765], calcium_labels=array([3097], dtype=uint16), N_frames_calcium_positive=1),
+  1784: TCell(labels=[1784], calcium_labels=array([2995, 3488], dtype=uint16), N_frames_calcium_positive=2),
+  1815: TCell(labels=[1815], calcium_labels=array([2799, 3280], dtype=uint16), N_frames_calcium_positive=2),
+  1822: TCell(labels=[1822], calcium_labels=array([3251, 3747], dtype=uint16), N_frames_calcium_positive=2),
+  1828: TCell(labels=[1828], calcium_labels=array([2986], dtype=uint16), N_frames_calcium_positive=1),
+  1830: TCell(labels=[1830], calcium_labels=array([2830, 3331, 3840, 3850, 4367], dtype=uint16), N_frames_calcium_positive=4),
+  1842: TCell(labels=[1842], calcium_labels=array([3069], dtype=uint16), N_frames_calcium_positive=1),
+  1845: TCell(labels=[1845], calcium_labels=array([2837], dtype=uint16), N_frames_calcium_positive=1),
+  1851: TCell(labels=[1851], calcium_labels=array([3174, 3689], dtype=uint16), N_frames_calcium_positive=2),
+  1865: TCell(labels=[1865], calcium_labels=array([3162], dtype=uint16), N_frames_calcium_positive=1),
+  1871: TCell(labels=[1871], calcium_labels=array([2974], dtype=uint16), N_frames_calcium_positive=1),
+  1875: TCell(labels=[1875], calcium_labels=array([3003], dtype=uint16), N_frames_calcium_positive=1),
+  1889: TCell(labels=[1889], calcium_labels=array([3183, 3704], dtype=uint16), N_frames_calcium_positive=2)},
+ 61: {},
+ 62: {},
+ 63: {},
+ 64: {},
+ 65: {},
+ 66: {},
+ 67: {},
+ 68: {},
+ 69: {},
+ 70: {36: TCell(labels=[36], calcium_labels=array([ 252,  687, 1143, 1642, 2102, 2572, 3056, 3543], dtype=uint16), N_frames_calcium_positive=8),
+  122: TCell(labels=[122], calcium_labels=array([3342, 3850], dtype=uint16), N_frames_calcium_positive=2),
+  374: TCell(labels=[374], calcium_labels=array([3691], dtype=uint16), N_frames_calcium_positive=1),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  648: TCell(labels=[648], calcium_labels=array([3514], dtype=uint16), N_frames_calcium_positive=1),
+  739: TCell(labels=[739], calcium_labels=array([3537], dtype=uint16), N_frames_calcium_positive=1),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  976: TCell(labels=[976], calcium_labels=array([2057, 2536, 2995, 3488], dtype=uint16), N_frames_calcium_positive=4),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1064: TCell(labels=[1064], calcium_labels=array([2233, 2682, 3191, 3703], dtype=uint16), N_frames_calcium_positive=4),
+  1212: TCell(labels=[1212], calcium_labels=array([1985, 2455, 2933, 3435, 3960], dtype=uint16), N_frames_calcium_positive=5),
+  1362: TCell(labels=[1362], calcium_labels=array([3399], dtype=uint16), N_frames_calcium_positive=1),
+  1381: TCell(labels=[1381], calcium_labels=array([2945, 3437], dtype=uint16), N_frames_calcium_positive=2),
+  1384: TCell(labels=[1384], calcium_labels=array([3303], dtype=uint16), N_frames_calcium_positive=1),
+  1394: TCell(labels=[1394], calcium_labels=array([2539, 3013, 3499], dtype=uint16), N_frames_calcium_positive=3),
+  1431: TCell(labels=[1431], calcium_labels=array([2736, 3238, 3758, 4266, 4740], dtype=uint16), N_frames_calcium_positive=5),
+  1440: TCell(labels=[1440], calcium_labels=array([3157, 3674], dtype=uint16), N_frames_calcium_positive=2),
+  1448: TCell(labels=[1448], calcium_labels=array([2405, 2856, 3370, 3880], dtype=uint16), N_frames_calcium_positive=4),
+  1508: TCell(labels=[1508], calcium_labels=array([3488], dtype=uint16), N_frames_calcium_positive=1),
+  1566: TCell(labels=[1566], calcium_labels=array([2887, 3399], dtype=uint16), N_frames_calcium_positive=2),
+  1600: TCell(labels=[1600], calcium_labels=array([2787, 3278], dtype=uint16), N_frames_calcium_positive=2),
+  1606: TCell(labels=[1606], calcium_labels=array([2852, 3350], dtype=uint16), N_frames_calcium_positive=2),
+  1610: TCell(labels=[1610], calcium_labels=array([3388], dtype=uint16), N_frames_calcium_positive=1),
+  1617: TCell(labels=[1617], calcium_labels=array([2930, 3422, 3927, 4425, 4878], dtype=uint16), N_frames_calcium_positive=5),
+  1650: TCell(labels=[1650], calcium_labels=array([2839, 2853, 3342], dtype=uint16), N_frames_calcium_positive=2),
+  1654: TCell(labels=[1654], calcium_labels=array([2826, 3319, 3838, 4370], dtype=uint16), N_frames_calcium_positive=4),
+  1688: TCell(labels=[1688], calcium_labels=array([3739], dtype=uint16), N_frames_calcium_positive=1),
+  1691: TCell(labels=[1691], calcium_labels=array([3223, 3733, 4220], dtype=uint16), N_frames_calcium_positive=3),
+  1700: TCell(labels=[1700], calcium_labels=array([3029, 3543, 4031], dtype=uint16), N_frames_calcium_positive=3),
+  1704: TCell(labels=[1704], calcium_labels=array([3558, 4085], dtype=uint16), N_frames_calcium_positive=2),
+  1728: TCell(labels=[1728], calcium_labels=array([3023, 3511, 4023], dtype=uint16), N_frames_calcium_positive=3),
+  1754: TCell(labels=[1754], calcium_labels=array([3081, 3564, 4091], dtype=uint16), N_frames_calcium_positive=3),
+  1784: TCell(labels=[1784], calcium_labels=array([2995, 3488], dtype=uint16), N_frames_calcium_positive=2),
+  1815: TCell(labels=[1815], calcium_labels=array([2799, 3280], dtype=uint16), N_frames_calcium_positive=2),
+  1822: TCell(labels=[1822], calcium_labels=array([3251, 3747], dtype=uint16), N_frames_calcium_positive=2),
+  1830: TCell(labels=[1830], calcium_labels=array([2830, 3331, 3840, 3850, 4367], dtype=uint16), N_frames_calcium_positive=4),
+  1851: TCell(labels=[1851], calcium_labels=array([3174, 3689], dtype=uint16), N_frames_calcium_positive=2),
+  1878: TCell(labels=[1878], calcium_labels=array([3295], dtype=uint16), N_frames_calcium_positive=1),
+  1889: TCell(labels=[1889], calcium_labels=array([3183, 3704], dtype=uint16), N_frames_calcium_positive=2),
+  1905: TCell(labels=[1905], calcium_labels=array([3478, 3997, 4493, 4947, 5370], dtype=uint16), N_frames_calcium_positive=5),
+  1916: TCell(labels=[1916], calcium_labels=array([3490, 4009, 4485, 4932], dtype=uint16), N_frames_calcium_positive=4),
+  1920: TCell(labels=[1920], calcium_labels=array([3511, 4023], dtype=uint16), N_frames_calcium_positive=2),
+  1932: TCell(labels=[1932], calcium_labels=array([3692, 4204, 4676], dtype=uint16), N_frames_calcium_positive=3),
+  1935: TCell(labels=[1935], calcium_labels=array([3441], dtype=uint16), N_frames_calcium_positive=1),
+  1936: TCell(labels=[1936], calcium_labels=array([3349, 3859, 4396, 4848, 5279, 5753], dtype=uint16), N_frames_calcium_positive=6),
+  1948: TCell(labels=[1948], calcium_labels=array([3474, 3988], dtype=uint16), N_frames_calcium_positive=2),
+  1976: TCell(labels=[1976], calcium_labels=array([3415], dtype=uint16), N_frames_calcium_positive=1),
+  1992: TCell(labels=[1992], calcium_labels=array([3301], dtype=uint16), N_frames_calcium_positive=1),
+  2002: TCell(labels=[2002], calcium_labels=array([3565], dtype=uint16), N_frames_calcium_positive=1),
+  2003: TCell(labels=[2003], calcium_labels=array([3535], dtype=uint16), N_frames_calcium_positive=1),
+  2005: TCell(labels=[2005], calcium_labels=array([3470], dtype=uint16), N_frames_calcium_positive=1),
+  2008: TCell(labels=[2008], calcium_labels=array([3413], dtype=uint16), N_frames_calcium_positive=1),
+  2016: TCell(labels=[2016], calcium_labels=array([3641, 4178, 4661], dtype=uint16), N_frames_calcium_positive=3),
+  2017: TCell(labels=[2017], calcium_labels=array([3689], dtype=uint16), N_frames_calcium_positive=1),
+  2024: TCell(labels=[2024], calcium_labels=array([3326], dtype=uint16), N_frames_calcium_positive=1),
+  2028: TCell(labels=[2028], calcium_labels=array([3283, 3295, 3809], dtype=uint16), N_frames_calcium_positive=2),
+  2030: TCell(labels=[2030], calcium_labels=array([3504], dtype=uint16), N_frames_calcium_positive=1),
+  2037: TCell(labels=[2037], calcium_labels=array([3409], dtype=uint16), N_frames_calcium_positive=1),
+  2065: TCell(labels=[2065], calcium_labels=array([3441, 3963], dtype=uint16), N_frames_calcium_positive=2),
+  2091: TCell(labels=[2091], calcium_labels=array([3350], dtype=uint16), N_frames_calcium_positive=1),
+  2100: TCell(labels=[2100], calcium_labels=array([3411], dtype=uint16), N_frames_calcium_positive=1),
+  2116: TCell(labels=[2116], calcium_labels=array([3628, 4152], dtype=uint16), N_frames_calcium_positive=2),
+  2131: TCell(labels=[2131], calcium_labels=array([3470], dtype=uint16), N_frames_calcium_positive=1),
+  2155: TCell(labels=[2155], calcium_labels=array([3664, 4177, 4675, 5098], dtype=uint16), N_frames_calcium_positive=4),
+  2168: TCell(labels=[2168], calcium_labels=array([3446, 3962], dtype=uint16), N_frames_calcium_positive=2),
+  2176: TCell(labels=[2176], calcium_labels=array([3646, 4175], dtype=uint16), N_frames_calcium_positive=2),
+  2181: TCell(labels=[2181], calcium_labels=array([3326, 3828], dtype=uint16), N_frames_calcium_positive=2),
+  2195: TCell(labels=[2195], calcium_labels=array([3474, 3988], dtype=uint16), N_frames_calcium_positive=2)},
+ 71: {},
+ 72: {},
+ 73: {},
+ 74: {},
+ 75: {},
+ 76: {},
+ 77: {},
+ 78: {},
+ 79: {},
+ 80: {25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  70: TCell(labels=[70], calcium_labels=array([4200], dtype=uint16), N_frames_calcium_positive=1),
+  122: TCell(labels=[122], calcium_labels=array([3342, 3850], dtype=uint16), N_frames_calcium_positive=2),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  666: TCell(labels=[666], calcium_labels=array([4018], dtype=uint16), N_frames_calcium_positive=1),
+  843: TCell(labels=[843], calcium_labels=array([3834], dtype=uint16), N_frames_calcium_positive=1),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1042: TCell(labels=[1042], calcium_labels=array([4022, 4513, 4953], dtype=uint16), N_frames_calcium_positive=3),
+  1086: TCell(labels=[1086], calcium_labels=array([3984], dtype=uint16), N_frames_calcium_positive=1),
+  1124: TCell(labels=[1124], calcium_labels=array([4074], dtype=uint16), N_frames_calcium_positive=1),
+  1212: TCell(labels=[1212], calcium_labels=array([1985, 2455, 2933, 3435, 3960], dtype=uint16), N_frames_calcium_positive=5),
+  1431: TCell(labels=[1431], calcium_labels=array([2736, 3238, 3758, 4266, 4740], dtype=uint16), N_frames_calcium_positive=5),
+  1448: TCell(labels=[1448], calcium_labels=array([2405, 2856, 3370, 3880], dtype=uint16), N_frames_calcium_positive=4),
+  1617: TCell(labels=[1617], calcium_labels=array([2930, 3422, 3927, 4425, 4878], dtype=uint16), N_frames_calcium_positive=5),
+  1654: TCell(labels=[1654], calcium_labels=array([2826, 3319, 3838, 4370], dtype=uint16), N_frames_calcium_positive=4),
+  1691: TCell(labels=[1691], calcium_labels=array([3223, 3733, 4220], dtype=uint16), N_frames_calcium_positive=3),
+  1700: TCell(labels=[1700], calcium_labels=array([3029, 3543, 4031], dtype=uint16), N_frames_calcium_positive=3),
+  1704: TCell(labels=[1704], calcium_labels=array([3558, 4085], dtype=uint16), N_frames_calcium_positive=2),
+  1728: TCell(labels=[1728], calcium_labels=array([3023, 3511, 4023], dtype=uint16), N_frames_calcium_positive=3),
+  1754: TCell(labels=[1754], calcium_labels=array([3081, 3564, 4091], dtype=uint16), N_frames_calcium_positive=3),
+  1830: TCell(labels=[1830], calcium_labels=array([2830, 3331, 3840, 3850, 4367], dtype=uint16), N_frames_calcium_positive=4),
+  1842: TCell(labels=[1842], calcium_labels=array([4092], dtype=uint16), N_frames_calcium_positive=1),
+  1859: TCell(labels=[1859], calcium_labels=array([3840, 4367], dtype=uint16), N_frames_calcium_positive=2),
+  1905: TCell(labels=[1905], calcium_labels=array([3478, 3997, 4493, 4947, 5370], dtype=uint16), N_frames_calcium_positive=5),
+  1916: TCell(labels=[1916], calcium_labels=array([3490, 4009, 4485, 4932], dtype=uint16), N_frames_calcium_positive=4),
+  1920: TCell(labels=[1920], calcium_labels=array([3511, 4023], dtype=uint16), N_frames_calcium_positive=2),
+  1932: TCell(labels=[1932], calcium_labels=array([3692, 4204, 4676], dtype=uint16), N_frames_calcium_positive=3),
+  1936: TCell(labels=[1936], calcium_labels=array([3349, 3859, 4396, 4848, 5279, 5753], dtype=uint16), N_frames_calcium_positive=6),
+  1948: TCell(labels=[1948], calcium_labels=array([3474, 3988], dtype=uint16), N_frames_calcium_positive=2),
+  1971: TCell(labels=[1971], calcium_labels=array([4099], dtype=uint16), N_frames_calcium_positive=1),
+  2016: TCell(labels=[2016], calcium_labels=array([3641, 4178, 4661], dtype=uint16), N_frames_calcium_positive=3),
+  2028: TCell(labels=[2028], calcium_labels=array([3283, 3295, 3809], dtype=uint16), N_frames_calcium_positive=2),
+  2032: TCell(labels=[2032], calcium_labels=array([3961, 4462, 4468], dtype=uint16), N_frames_calcium_positive=2),
+  2065: TCell(labels=[2065], calcium_labels=array([3441, 3963], dtype=uint16), N_frames_calcium_positive=2),
+  2116: TCell(labels=[2116], calcium_labels=array([3628, 4152], dtype=uint16), N_frames_calcium_positive=2),
+  2155: TCell(labels=[2155], calcium_labels=array([3664, 4177, 4675, 5098], dtype=uint16), N_frames_calcium_positive=4),
+  2168: TCell(labels=[2168], calcium_labels=array([3446, 3962], dtype=uint16), N_frames_calcium_positive=2),
+  2176: TCell(labels=[2176], calcium_labels=array([3646, 4175], dtype=uint16), N_frames_calcium_positive=2),
+  2181: TCell(labels=[2181], calcium_labels=array([3326, 3828], dtype=uint16), N_frames_calcium_positive=2),
+  2195: TCell(labels=[2195], calcium_labels=array([3474, 3988], dtype=uint16), N_frames_calcium_positive=2),
+  2240: TCell(labels=[2240], calcium_labels=array([3960], dtype=uint16), N_frames_calcium_positive=1),
+  2255: TCell(labels=[2255], calcium_labels=array([4033], dtype=uint16), N_frames_calcium_positive=1),
+  2273: TCell(labels=[2273], calcium_labels=array([4034, 4526], dtype=uint16), N_frames_calcium_positive=2),
+  2276: TCell(labels=[2276], calcium_labels=array([3885, 4424], dtype=uint16), N_frames_calcium_positive=2),
+  2277: TCell(labels=[2277], calcium_labels=array([4085], dtype=uint16), N_frames_calcium_positive=1),
+  2289: TCell(labels=[2289], calcium_labels=array([3795], dtype=uint16), N_frames_calcium_positive=1),
+  2294: TCell(labels=[2294], calcium_labels=array([4192, 4200], dtype=uint16), N_frames_calcium_positive=1),
+  2298: TCell(labels=[2298], calcium_labels=array([4102, 4589, 4595], dtype=uint16), N_frames_calcium_positive=2),
+  2310: TCell(labels=[2310], calcium_labels=array([4266], dtype=uint16), N_frames_calcium_positive=1),
+  2323: TCell(labels=[2323], calcium_labels=array([4220, 4716, 5144], dtype=uint16), N_frames_calcium_positive=3),
+  2353: TCell(labels=[2353], calcium_labels=array([4102], dtype=uint16), N_frames_calcium_positive=1),
+  2368: TCell(labels=[2368], calcium_labels=array([3963, 4459], dtype=uint16), N_frames_calcium_positive=2),
+  2369: TCell(labels=[2369], calcium_labels=array([3809], dtype=uint16), N_frames_calcium_positive=1),
+  2404: TCell(labels=[2404], calcium_labels=array([4034, 4526], dtype=uint16), N_frames_calcium_positive=2),
+  2406: TCell(labels=[2406], calcium_labels=array([4152], dtype=uint16), N_frames_calcium_positive=1),
+  2408: TCell(labels=[2408], calcium_labels=array([4054, 4552], dtype=uint16), N_frames_calcium_positive=2),
+  2436: TCell(labels=[2436], calcium_labels=array([4177, 4675, 5098, 5539, 6021], dtype=uint16), N_frames_calcium_positive=5),
+  2471: TCell(labels=[2471], calcium_labels=array([4206], dtype=uint16), N_frames_calcium_positive=1),
+  2502: TCell(labels=[2502], calcium_labels=array([4118], dtype=uint16), N_frames_calcium_positive=1),
+  2528: TCell(labels=[2528], calcium_labels=array([4206, 4711], dtype=uint16), N_frames_calcium_positive=2),
+  2540: TCell(labels=[2540], calcium_labels=array([4175, 4666], dtype=uint16), N_frames_calcium_positive=2),
+  2548: TCell(labels=[2548], calcium_labels=array([4033, 4528], dtype=uint16), N_frames_calcium_positive=2)},
+ 81: {},
+ 82: {},
+ 83: {},
+ 84: {},
+ 85: {},
+ 86: {},
+ 87: {},
+ 88: {},
+ 89: {},
+ 90: {25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  331: TCell(labels=[331], calcium_labels=array([4454, 4891, 4892], dtype=uint16), N_frames_calcium_positive=2),
+  597: TCell(labels=[597], calcium_labels=array([1186, 1698, 2144, 2611, 3100, 3591, 4110, 4628], dtype=uint16), N_frames_calcium_positive=8),
+  739: TCell(labels=[739], calcium_labels=array([4562], dtype=uint16), N_frames_calcium_positive=1),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1042: TCell(labels=[1042], calcium_labels=array([4022, 4513, 4953], dtype=uint16), N_frames_calcium_positive=3),
+  1431: TCell(labels=[1431], calcium_labels=array([2736, 3238, 3758, 4266, 4740], dtype=uint16), N_frames_calcium_positive=5),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  1617: TCell(labels=[1617], calcium_labels=array([2930, 3422, 3927, 4425, 4878], dtype=uint16), N_frames_calcium_positive=5),
+  1654: TCell(labels=[1654], calcium_labels=array([2826, 3319, 3838, 4370], dtype=uint16), N_frames_calcium_positive=4),
+  1830: TCell(labels=[1830], calcium_labels=array([2830, 3331, 3840, 3850, 4367], dtype=uint16), N_frames_calcium_positive=4),
+  1859: TCell(labels=[1859], calcium_labels=array([3840, 4367], dtype=uint16), N_frames_calcium_positive=2),
+  1905: TCell(labels=[1905], calcium_labels=array([3478, 3997, 4493, 4947, 5370], dtype=uint16), N_frames_calcium_positive=5),
+  1916: TCell(labels=[1916], calcium_labels=array([3490, 4009, 4485, 4932], dtype=uint16), N_frames_calcium_positive=4),
+  1932: TCell(labels=[1932], calcium_labels=array([3692, 4204, 4676], dtype=uint16), N_frames_calcium_positive=3),
+  1936: TCell(labels=[1936], calcium_labels=array([3349, 3859, 4396, 4848, 5279, 5753], dtype=uint16), N_frames_calcium_positive=6),
+  1955: TCell(labels=[1955], calcium_labels=array([4453], dtype=uint16), N_frames_calcium_positive=1),
+  2016: TCell(labels=[2016], calcium_labels=array([3641, 4178, 4661], dtype=uint16), N_frames_calcium_positive=3),
+  2032: TCell(labels=[2032], calcium_labels=array([3961, 4462, 4468], dtype=uint16), N_frames_calcium_positive=2),
+  2037: TCell(labels=[2037], calcium_labels=array([4427], dtype=uint16), N_frames_calcium_positive=1),
+  2098: TCell(labels=[2098], calcium_labels=array([4562], dtype=uint16), N_frames_calcium_positive=1),
+  2155: TCell(labels=[2155], calcium_labels=array([3664, 4177, 4675, 5098], dtype=uint16), N_frames_calcium_positive=4),
+  2170: TCell(labels=[2170], calcium_labels=array([4506, 4957], dtype=uint16), N_frames_calcium_positive=2),
+  2273: TCell(labels=[2273], calcium_labels=array([4034, 4526], dtype=uint16), N_frames_calcium_positive=2),
+  2276: TCell(labels=[2276], calcium_labels=array([3885, 4424], dtype=uint16), N_frames_calcium_positive=2),
+  2298: TCell(labels=[2298], calcium_labels=array([4102, 4589, 4595], dtype=uint16), N_frames_calcium_positive=2),
+  2314: TCell(labels=[2314], calcium_labels=array([4657, 5086], dtype=uint16), N_frames_calcium_positive=2),
+  2323: TCell(labels=[2323], calcium_labels=array([4220, 4716, 5144], dtype=uint16), N_frames_calcium_positive=3),
+  2368: TCell(labels=[2368], calcium_labels=array([3963, 4459], dtype=uint16), N_frames_calcium_positive=2),
+  2404: TCell(labels=[2404], calcium_labels=array([4034, 4526], dtype=uint16), N_frames_calcium_positive=2),
+  2408: TCell(labels=[2408], calcium_labels=array([4054, 4552], dtype=uint16), N_frames_calcium_positive=2),
+  2409: TCell(labels=[2409], calcium_labels=array([4454, 4891], dtype=uint16), N_frames_calcium_positive=2),
+  2436: TCell(labels=[2436], calcium_labels=array([4177, 4675, 5098, 5539, 6021], dtype=uint16), N_frames_calcium_positive=5),
+  2485: TCell(labels=[2485], calcium_labels=array([4323], dtype=uint16), N_frames_calcium_positive=1),
+  2489: TCell(labels=[2489], calcium_labels=array([4740, 5183, 5604, 6119], dtype=uint16), N_frames_calcium_positive=4),
+  2528: TCell(labels=[2528], calcium_labels=array([4206, 4711], dtype=uint16), N_frames_calcium_positive=2),
+  2540: TCell(labels=[2540], calcium_labels=array([4175, 4666], dtype=uint16), N_frames_calcium_positive=2),
+  2548: TCell(labels=[2548], calcium_labels=array([4033, 4528], dtype=uint16), N_frames_calcium_positive=2),
+  2561: TCell(labels=[2561], calcium_labels=array([4710, 5126, 5580, 6064], dtype=uint16), N_frames_calcium_positive=4),
+  2566: TCell(labels=[2566], calcium_labels=array([4691, 4699, 5121], dtype=uint16), N_frames_calcium_positive=2),
+  2576: TCell(labels=[2576], calcium_labels=array([4396, 4848, 5279], dtype=uint16), N_frames_calcium_positive=3),
+  2597: TCell(labels=[2597], calcium_labels=array([4396, 4848], dtype=uint16), N_frames_calcium_positive=2),
+  2615: TCell(labels=[2615], calcium_labels=array([4462], dtype=uint16), N_frames_calcium_positive=1),
+  2621: TCell(labels=[2621], calcium_labels=array([4522, 4960, 5374, 5855], dtype=uint16), N_frames_calcium_positive=4),
+  2634: TCell(labels=[2634], calcium_labels=array([4688], dtype=uint16), N_frames_calcium_positive=1),
+  2638: TCell(labels=[2638], calcium_labels=array([4586], dtype=uint16), N_frames_calcium_positive=1),
+  2663: TCell(labels=[2663], calcium_labels=array([4580, 5030], dtype=uint16), N_frames_calcium_positive=2),
+  2705: TCell(labels=[2705], calcium_labels=array([4680], dtype=uint16), N_frames_calcium_positive=1),
+  2725: TCell(labels=[2725], calcium_labels=array([4441], dtype=uint16), N_frames_calcium_positive=1),
+  2758: TCell(labels=[2758], calcium_labels=array([4323], dtype=uint16), N_frames_calcium_positive=1),
+  2792: TCell(labels=[2792], calcium_labels=array([4666], dtype=uint16), N_frames_calcium_positive=1),
+  2802: TCell(labels=[2802], calcium_labels=array([4424, 4900, 5333, 5353, 5787], dtype=uint16), N_frames_calcium_positive=4),
+  2808: TCell(labels=[2808], calcium_labels=array([4383, 4813], dtype=uint16), N_frames_calcium_positive=2),
+  2831: TCell(labels=[2831], calcium_labels=array([4493], dtype=uint16), N_frames_calcium_positive=1),
+  2855: TCell(labels=[2855], calcium_labels=array([4440], dtype=uint16), N_frames_calcium_positive=1),
+  2886: TCell(labels=[2886], calcium_labels=array([4657, 5086], dtype=uint16), N_frames_calcium_positive=2)},
+ 91: {},
+ 92: {},
+ 93: {},
+ 94: {},
+ 95: {},
+ 96: {},
+ 97: {},
+ 98: {},
+ 99: {},
+ 100: {25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  331: TCell(labels=[331], calcium_labels=array([4454, 4891, 4892], dtype=uint16), N_frames_calcium_positive=2),
+  500: TCell(labels=[500], calcium_labels=array([4921], dtype=uint16), N_frames_calcium_positive=1),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1042: TCell(labels=[1042], calcium_labels=array([4022, 4513, 4953], dtype=uint16), N_frames_calcium_positive=3),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  1578: TCell(labels=[1578], calcium_labels=array([5021], dtype=uint16), N_frames_calcium_positive=1),
+  1617: TCell(labels=[1617], calcium_labels=array([2930, 3422, 3927, 4425, 4878], dtype=uint16), N_frames_calcium_positive=5),
+  1842: TCell(labels=[1842], calcium_labels=array([5031, 5459, 5933, 6391, 6776, 7205], dtype=uint16), N_frames_calcium_positive=6),
+  1905: TCell(labels=[1905], calcium_labels=array([3478, 3997, 4493, 4947, 5370], dtype=uint16), N_frames_calcium_positive=5),
+  1916: TCell(labels=[1916], calcium_labels=array([3490, 4009, 4485, 4932], dtype=uint16), N_frames_calcium_positive=4),
+  1936: TCell(labels=[1936], calcium_labels=array([3349, 3859, 4396, 4848, 5279, 5753], dtype=uint16), N_frames_calcium_positive=6),
+  1948: TCell(labels=[1948], calcium_labels=array([4934, 5359, 5821], dtype=uint16), N_frames_calcium_positive=3),
+  2155: TCell(labels=[2155], calcium_labels=array([3664, 4177, 4675, 5098], dtype=uint16), N_frames_calcium_positive=4),
+  2170: TCell(labels=[2170], calcium_labels=array([4506, 4957], dtype=uint16), N_frames_calcium_positive=2),
+  2195: TCell(labels=[2195], calcium_labels=array([4934], dtype=uint16), N_frames_calcium_positive=1),
+  2314: TCell(labels=[2314], calcium_labels=array([4657, 5086], dtype=uint16), N_frames_calcium_positive=2),
+  2323: TCell(labels=[2323], calcium_labels=array([4220, 4716, 5144], dtype=uint16), N_frames_calcium_positive=3),
+  2409: TCell(labels=[2409], calcium_labels=array([4454, 4891], dtype=uint16), N_frames_calcium_positive=2),
+  2436: TCell(labels=[2436], calcium_labels=array([4177, 4675, 5098, 5539, 6021], dtype=uint16), N_frames_calcium_positive=5),
+  2489: TCell(labels=[2489], calcium_labels=array([4740, 5183, 5604, 6119], dtype=uint16), N_frames_calcium_positive=4),
+  2561: TCell(labels=[2561], calcium_labels=array([4710, 5126, 5580, 6064], dtype=uint16), N_frames_calcium_positive=4),
+  2566: TCell(labels=[2566], calcium_labels=array([4691, 4699, 5121], dtype=uint16), N_frames_calcium_positive=2),
+  2576: TCell(labels=[2576], calcium_labels=array([4396, 4848, 5279], dtype=uint16), N_frames_calcium_positive=3),
+  2597: TCell(labels=[2597], calcium_labels=array([4396, 4848], dtype=uint16), N_frames_calcium_positive=2),
+  2616: TCell(labels=[2616], calcium_labels=array([4844, 5258], dtype=uint16), N_frames_calcium_positive=2),
+  2621: TCell(labels=[2621], calcium_labels=array([4522, 4960, 5374, 5855], dtype=uint16), N_frames_calcium_positive=4),
+  2663: TCell(labels=[2663], calcium_labels=array([4580, 5030], dtype=uint16), N_frames_calcium_positive=2),
+  2802: TCell(labels=[2802], calcium_labels=array([4424, 4900, 5333, 5353, 5787], dtype=uint16), N_frames_calcium_positive=4),
+  2808: TCell(labels=[2808], calcium_labels=array([4383, 4813], dtype=uint16), N_frames_calcium_positive=2),
+  2809: TCell(labels=[2809], calcium_labels=array([4845], dtype=uint16), N_frames_calcium_positive=1),
+  2886: TCell(labels=[2886], calcium_labels=array([4657, 5086], dtype=uint16), N_frames_calcium_positive=2),
+  2896: TCell(labels=[2896], calcium_labels=array([5060], dtype=uint16), N_frames_calcium_positive=1),
+  2916: TCell(labels=[2916], calcium_labels=array([4892], dtype=uint16), N_frames_calcium_positive=1),
+  2932: TCell(labels=[2932], calcium_labels=array([4962, 5384, 5868], dtype=uint16), N_frames_calcium_positive=3),
+  2937: TCell(labels=[2937], calcium_labels=array([5022, 5446, 5931], dtype=uint16), N_frames_calcium_positive=3),
+  2947: TCell(labels=[2947], calcium_labels=array([5168], dtype=uint16), N_frames_calcium_positive=1),
+  2952: TCell(labels=[2952], calcium_labels=array([4803, 4821], dtype=uint16), N_frames_calcium_positive=1),
+  2960: TCell(labels=[2960], calcium_labels=array([5060], dtype=uint16), N_frames_calcium_positive=1),
+  2968: TCell(labels=[2968], calcium_labels=array([5086, 5542], dtype=uint16), N_frames_calcium_positive=2),
+  2986: TCell(labels=[2986], calcium_labels=array([5098], dtype=uint16), N_frames_calcium_positive=1),
+  2987: TCell(labels=[2987], calcium_labels=array([4776, 5203], dtype=uint16), N_frames_calcium_positive=2),
+  3009: TCell(labels=[3009], calcium_labels=array([4996], dtype=uint16), N_frames_calcium_positive=1),
+  3027: TCell(labels=[3027], calcium_labels=array([5044, 5485], dtype=uint16), N_frames_calcium_positive=2),
+  3036: TCell(labels=[3036], calcium_labels=array([5030, 5455, 5938], dtype=uint16), N_frames_calcium_positive=3),
+  3051: TCell(labels=[3051], calcium_labels=array([4932], dtype=uint16), N_frames_calcium_positive=1),
+  3068: TCell(labels=[3068], calcium_labels=array([4921], dtype=uint16), N_frames_calcium_positive=1),
+  3082: TCell(labels=[3082], calcium_labels=array([4921, 5343], dtype=uint16), N_frames_calcium_positive=2),
+  3086: TCell(labels=[3086], calcium_labels=array([4800, 5223, 5673], dtype=uint16), N_frames_calcium_positive=3),
+  3090: TCell(labels=[3090], calcium_labels=array([4886, 5296], dtype=uint16), N_frames_calcium_positive=2),
+  3133: TCell(labels=[3133], calcium_labels=array([5167, 5604], dtype=uint16), N_frames_calcium_positive=2),
+  3153: TCell(labels=[3153], calcium_labels=array([4800], dtype=uint16), N_frames_calcium_positive=1),
+  3157: TCell(labels=[3157], calcium_labels=array([5144], dtype=uint16), N_frames_calcium_positive=1),
+  3161: TCell(labels=[3161], calcium_labels=array([5108], dtype=uint16), N_frames_calcium_positive=1),
+  3168: TCell(labels=[3168], calcium_labels=array([5102], dtype=uint16), N_frames_calcium_positive=1),
+  3194: TCell(labels=[3194], calcium_labels=array([4953, 5378], dtype=uint16), N_frames_calcium_positive=2),
+  3221: TCell(labels=[3221], calcium_labels=array([5006], dtype=uint16), N_frames_calcium_positive=1),
+  3229: TCell(labels=[3229], calcium_labels=array([4878, 5285], dtype=uint16), N_frames_calcium_positive=2),
+  3248: TCell(labels=[3248], calcium_labels=array([4844, 5258], dtype=uint16), N_frames_calcium_positive=2),
+  3255: TCell(labels=[3255], calcium_labels=array([5031], dtype=uint16), N_frames_calcium_positive=1),
+  3258: TCell(labels=[3258], calcium_labels=array([5044, 5485], dtype=uint16), N_frames_calcium_positive=2),
+  3276: TCell(labels=[3276], calcium_labels=array([4921], dtype=uint16), N_frames_calcium_positive=1)},
+ 101: {},
+ 102: {},
+ 103: {},
+ 104: {},
+ 105: {},
+ 106: {},
+ 107: {},
+ 108: {},
+ 109: {},
+ 110: {6: TCell(labels=[6], calcium_labels=array([5225], dtype=uint16), N_frames_calcium_positive=1),
+  25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  122: TCell(labels=[122], calcium_labels=array([5244, 5705], dtype=uint16), N_frames_calcium_positive=2),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  1749: TCell(labels=[1749], calcium_labels=array([5595], dtype=uint16), N_frames_calcium_positive=1),
+  1842: TCell(labels=[1842], calcium_labels=array([5031, 5459, 5933, 6391, 6776, 7205], dtype=uint16), N_frames_calcium_positive=6),
+  1868: TCell(labels=[1868], calcium_labels=array([5543], dtype=uint16), N_frames_calcium_positive=1),
+  1905: TCell(labels=[1905], calcium_labels=array([3478, 3997, 4493, 4947, 5370], dtype=uint16), N_frames_calcium_positive=5),
+  1936: TCell(labels=[1936], calcium_labels=array([3349, 3859, 4396, 4848, 5279, 5753], dtype=uint16), N_frames_calcium_positive=6),
+  1939: TCell(labels=[1939], calcium_labels=array([5330], dtype=uint16), N_frames_calcium_positive=1),
+  1948: TCell(labels=[1948], calcium_labels=array([4934, 5359, 5821], dtype=uint16), N_frames_calcium_positive=3),
+  2436: TCell(labels=[2436], calcium_labels=array([4177, 4675, 5098, 5539, 6021], dtype=uint16), N_frames_calcium_positive=5),
+  2489: TCell(labels=[2489], calcium_labels=array([4740, 5183, 5604, 6119], dtype=uint16), N_frames_calcium_positive=4),
+  2561: TCell(labels=[2561], calcium_labels=array([4710, 5126, 5580, 6064], dtype=uint16), N_frames_calcium_positive=4),
+  2576: TCell(labels=[2576], calcium_labels=array([4396, 4848, 5279], dtype=uint16), N_frames_calcium_positive=3),
+  2616: TCell(labels=[2616], calcium_labels=array([4844, 5258], dtype=uint16), N_frames_calcium_positive=2),
+  2621: TCell(labels=[2621], calcium_labels=array([4522, 4960, 5374, 5855], dtype=uint16), N_frames_calcium_positive=4),
+  2802: TCell(labels=[2802], calcium_labels=array([4424, 4900, 5333, 5353, 5787], dtype=uint16), N_frames_calcium_positive=4),
+  2932: TCell(labels=[2932], calcium_labels=array([4962, 5384, 5868], dtype=uint16), N_frames_calcium_positive=3),
+  2937: TCell(labels=[2937], calcium_labels=array([5022, 5446, 5931], dtype=uint16), N_frames_calcium_positive=3),
+  2968: TCell(labels=[2968], calcium_labels=array([5086, 5542], dtype=uint16), N_frames_calcium_positive=2),
+  2987: TCell(labels=[2987], calcium_labels=array([4776, 5203], dtype=uint16), N_frames_calcium_positive=2),
+  3027: TCell(labels=[3027], calcium_labels=array([5044, 5485], dtype=uint16), N_frames_calcium_positive=2),
+  3036: TCell(labels=[3036], calcium_labels=array([5030, 5455, 5938], dtype=uint16), N_frames_calcium_positive=3),
+  3082: TCell(labels=[3082], calcium_labels=array([4921, 5343], dtype=uint16), N_frames_calcium_positive=2),
+  3086: TCell(labels=[3086], calcium_labels=array([4800, 5223, 5673], dtype=uint16), N_frames_calcium_positive=3),
+  3090: TCell(labels=[3090], calcium_labels=array([4886, 5296], dtype=uint16), N_frames_calcium_positive=2),
+  3133: TCell(labels=[3133], calcium_labels=array([5167, 5604], dtype=uint16), N_frames_calcium_positive=2),
+  3194: TCell(labels=[3194], calcium_labels=array([4953, 5378], dtype=uint16), N_frames_calcium_positive=2),
+  3229: TCell(labels=[3229], calcium_labels=array([4878, 5285], dtype=uint16), N_frames_calcium_positive=2),
+  3247: TCell(labels=[3247], calcium_labels=array([5429], dtype=uint16), N_frames_calcium_positive=1),
+  3248: TCell(labels=[3248], calcium_labels=array([4844, 5258], dtype=uint16), N_frames_calcium_positive=2),
+  3258: TCell(labels=[3258], calcium_labels=array([5044, 5485], dtype=uint16), N_frames_calcium_positive=2),
+  3280: TCell(labels=[3280], calcium_labels=array([5428, 5928], dtype=uint16), N_frames_calcium_positive=2),
+  3307: TCell(labels=[3307], calcium_labels=array([5341, 5777], dtype=uint16), N_frames_calcium_positive=2),
+  3326: TCell(labels=[3326], calcium_labels=array([5222], dtype=uint16), N_frames_calcium_positive=1),
+  3405: TCell(labels=[3405], calcium_labels=array([5245], dtype=uint16), N_frames_calcium_positive=1),
+  3426: TCell(labels=[3426], calcium_labels=array([5333, 5787, 6264], dtype=uint16), N_frames_calcium_positive=3),
+  3436: TCell(labels=[3436], calcium_labels=array([5621], dtype=uint16), N_frames_calcium_positive=1),
+  3445: TCell(labels=[3445], calcium_labels=array([5537, 6010], dtype=uint16), N_frames_calcium_positive=2),
+  3500: TCell(labels=[3500], calcium_labels=array([5539, 6021], dtype=uint16), N_frames_calcium_positive=2),
+  3534: TCell(labels=[3534], calcium_labels=array([5343, 5808], dtype=uint16), N_frames_calcium_positive=2),
+  3582: TCell(labels=[3582], calcium_labels=array([5582, 5592], dtype=uint16), N_frames_calcium_positive=1),
+  3597: TCell(labels=[3597], calcium_labels=array([5532], dtype=uint16), N_frames_calcium_positive=1),
+  3601: TCell(labels=[3601], calcium_labels=array([5613, 5621, 6120, 6127], dtype=uint16), N_frames_calcium_positive=2),
+  3648: TCell(labels=[3648], calcium_labels=array([5582], dtype=uint16), N_frames_calcium_positive=1),
+  3653: TCell(labels=[3653], calcium_labels=array([5296, 5761], dtype=uint16), N_frames_calcium_positive=2),
+  3657: TCell(labels=[3657], calcium_labels=array([5536, 6013], dtype=uint16), N_frames_calcium_positive=2),
+  3658: TCell(labels=[3658], calcium_labels=array([5343, 5785, 5808], dtype=uint16), N_frames_calcium_positive=2),
+  3659: TCell(labels=[3659], calcium_labels=array([5203, 5654, 6146], dtype=uint16), N_frames_calcium_positive=3),
+  3660: TCell(labels=[3660], calcium_labels=array([5429, 5894], dtype=uint16), N_frames_calcium_positive=2),
+  3670: TCell(labels=[3670], calcium_labels=array([5245, 5711], dtype=uint16), N_frames_calcium_positive=2)},
+ 111: {},
+ 112: {},
+ 113: {},
+ 114: {},
+ 115: {},
+ 116: {},
+ 117: {},
+ 118: {},
+ 119: {},
+ 120: {25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  122: TCell(labels=[122], calcium_labels=array([5244, 5705], dtype=uint16), N_frames_calcium_positive=2),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  1842: TCell(labels=[1842], calcium_labels=array([5031, 5459, 5933, 6391, 6776, 7205], dtype=uint16), N_frames_calcium_positive=6),
+  1936: TCell(labels=[1936], calcium_labels=array([3349, 3859, 4396, 4848, 5279, 5753], dtype=uint16), N_frames_calcium_positive=6),
+  1948: TCell(labels=[1948], calcium_labels=array([4934, 5359, 5821], dtype=uint16), N_frames_calcium_positive=3),
+  2388: TCell(labels=[2388], calcium_labels=array([5835], dtype=uint16), N_frames_calcium_positive=1),
+  2436: TCell(labels=[2436], calcium_labels=array([4177, 4675, 5098, 5539, 6021], dtype=uint16), N_frames_calcium_positive=5),
+  2480: TCell(labels=[2480], calcium_labels=array([5661], dtype=uint16), N_frames_calcium_positive=1),
+  2489: TCell(labels=[2489], calcium_labels=array([4740, 5183, 5604, 6119], dtype=uint16), N_frames_calcium_positive=4),
+  2561: TCell(labels=[2561], calcium_labels=array([4710, 5126, 5580, 6064], dtype=uint16), N_frames_calcium_positive=4),
+  2621: TCell(labels=[2621], calcium_labels=array([4522, 4960, 5374, 5855], dtype=uint16), N_frames_calcium_positive=4),
+  2802: TCell(labels=[2802], calcium_labels=array([4424, 4900, 5333, 5353, 5787], dtype=uint16), N_frames_calcium_positive=4),
+  2877: TCell(labels=[2877], calcium_labels=array([5862, 6337], dtype=uint16), N_frames_calcium_positive=2),
+  2932: TCell(labels=[2932], calcium_labels=array([4962, 5384, 5868], dtype=uint16), N_frames_calcium_positive=3),
+  2937: TCell(labels=[2937], calcium_labels=array([5022, 5446, 5931], dtype=uint16), N_frames_calcium_positive=3),
+  3036: TCell(labels=[3036], calcium_labels=array([5030, 5455, 5938], dtype=uint16), N_frames_calcium_positive=3),
+  3086: TCell(labels=[3086], calcium_labels=array([4800, 5223, 5673], dtype=uint16), N_frames_calcium_positive=3),
+  3217: TCell(labels=[3217], calcium_labels=array([5835], dtype=uint16), N_frames_calcium_positive=1),
+  3280: TCell(labels=[3280], calcium_labels=array([5428, 5928], dtype=uint16), N_frames_calcium_positive=2),
+  3307: TCell(labels=[3307], calcium_labels=array([5341, 5777], dtype=uint16), N_frames_calcium_positive=2),
+  3400: TCell(labels=[3400], calcium_labels=array([5957], dtype=uint16), N_frames_calcium_positive=1),
+  3426: TCell(labels=[3426], calcium_labels=array([5333, 5787, 6264], dtype=uint16), N_frames_calcium_positive=3),
+  3445: TCell(labels=[3445], calcium_labels=array([5537, 6010], dtype=uint16), N_frames_calcium_positive=2),
+  3460: TCell(labels=[3460], calcium_labels=array([5958, 6424], dtype=uint16), N_frames_calcium_positive=2),
+  3469: TCell(labels=[3469], calcium_labels=array([5958, 6424, 6812], dtype=uint16), N_frames_calcium_positive=3),
+  3500: TCell(labels=[3500], calcium_labels=array([5539, 6021], dtype=uint16), N_frames_calcium_positive=2),
+  3534: TCell(labels=[3534], calcium_labels=array([5343, 5808], dtype=uint16), N_frames_calcium_positive=2),
+  3566: TCell(labels=[3566], calcium_labels=array([5672], dtype=uint16), N_frames_calcium_positive=1),
+  3601: TCell(labels=[3601], calcium_labels=array([5613, 5621, 6120, 6127], dtype=uint16), N_frames_calcium_positive=2),
+  3639: TCell(labels=[3639], calcium_labels=array([5957], dtype=uint16), N_frames_calcium_positive=1),
+  3653: TCell(labels=[3653], calcium_labels=array([5296, 5761], dtype=uint16), N_frames_calcium_positive=2),
+  3657: TCell(labels=[3657], calcium_labels=array([5536, 6013], dtype=uint16), N_frames_calcium_positive=2),
+  3658: TCell(labels=[3658], calcium_labels=array([5343, 5785, 5808], dtype=uint16), N_frames_calcium_positive=2),
+  3659: TCell(labels=[3659], calcium_labels=array([5203, 5654, 6146], dtype=uint16), N_frames_calcium_positive=3),
+  3660: TCell(labels=[3660], calcium_labels=array([5429, 5894], dtype=uint16), N_frames_calcium_positive=2),
+  3670: TCell(labels=[3670], calcium_labels=array([5245, 5711], dtype=uint16), N_frames_calcium_positive=2),
+  3686: TCell(labels=[3686], calcium_labels=array([5938], dtype=uint16), N_frames_calcium_positive=1),
+  3715: TCell(labels=[3715], calcium_labels=array([5753], dtype=uint16), N_frames_calcium_positive=1),
+  3721: TCell(labels=[3721], calcium_labels=array([6000, 6457], dtype=uint16), N_frames_calcium_positive=2),
+  3733: TCell(labels=[3733], calcium_labels=array([5961], dtype=uint16), N_frames_calcium_positive=1),
+  3782: TCell(labels=[3782], calcium_labels=array([5673], dtype=uint16), N_frames_calcium_positive=1),
+  3803: TCell(labels=[3803], calcium_labels=array([5785], dtype=uint16), N_frames_calcium_positive=1),
+  3831: TCell(labels=[3831], calcium_labels=array([5783], dtype=uint16), N_frames_calcium_positive=1),
+  3854: TCell(labels=[3854], calcium_labels=array([6119], dtype=uint16), N_frames_calcium_positive=1),
+  3896: TCell(labels=[3896], calcium_labels=array([5784], dtype=uint16), N_frames_calcium_positive=1),
+  3978: TCell(labels=[3978], calcium_labels=array([5777], dtype=uint16), N_frames_calcium_positive=1),
+  3988: TCell(labels=[3988], calcium_labels=array([5705], dtype=uint16), N_frames_calcium_positive=1),
+  3989: TCell(labels=[3989], calcium_labels=array([5662, 6158], dtype=uint16), N_frames_calcium_positive=2),
+  4000: TCell(labels=[4000], calcium_labels=array([5692], dtype=uint16), N_frames_calcium_positive=1),
+  4057: TCell(labels=[4057], calcium_labels=array([6065, 6526, 6914], dtype=uint16), N_frames_calcium_positive=3)},
+ 121: {},
+ 122: {},
+ 123: {},
+ 124: {},
+ 125: {},
+ 126: {},
+ 127: {},
+ 128: {},
+ 129: {},
+ 130: {25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  904: TCell(labels=[904], calcium_labels=array([2564, 3047, 3537, 4075, 4562, 5024, 5460, 5939, 6404], dtype=uint16), N_frames_calcium_positive=9),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  1578: TCell(labels=[1578], calcium_labels=array([6338], dtype=uint16), N_frames_calcium_positive=1),
+  1842: TCell(labels=[1842], calcium_labels=array([5031, 5459, 5933, 6391, 6776, 7205], dtype=uint16), N_frames_calcium_positive=6),
+  2429: TCell(labels=[2429], calcium_labels=array([6397, 6786, 7217, 7601], dtype=uint16), N_frames_calcium_positive=4),
+  2877: TCell(labels=[2877], calcium_labels=array([5862, 6337], dtype=uint16), N_frames_calcium_positive=2),
+  3121: TCell(labels=[3121], calcium_labels=array([6338], dtype=uint16), N_frames_calcium_positive=1),
+  3426: TCell(labels=[3426], calcium_labels=array([5333, 5787, 6264], dtype=uint16), N_frames_calcium_positive=3),
+  3460: TCell(labels=[3460], calcium_labels=array([5958, 6424], dtype=uint16), N_frames_calcium_positive=2),
+  3469: TCell(labels=[3469], calcium_labels=array([5958, 6424, 6812], dtype=uint16), N_frames_calcium_positive=3),
+  3597: TCell(labels=[3597], calcium_labels=array([6457], dtype=uint16), N_frames_calcium_positive=1),
+  3604: TCell(labels=[3604], calcium_labels=array([6457, 6866, 7290, 7701, 7712], dtype=uint16), N_frames_calcium_positive=4),
+  3633: TCell(labels=[3633], calcium_labels=array([6193, 6620], dtype=uint16), N_frames_calcium_positive=2),
+  3659: TCell(labels=[3659], calcium_labels=array([5203, 5654, 6146], dtype=uint16), N_frames_calcium_positive=3),
+  3708: TCell(labels=[3708], calcium_labels=array([6146], dtype=uint16), N_frames_calcium_positive=1),
+  3721: TCell(labels=[3721], calcium_labels=array([6000, 6457], dtype=uint16), N_frames_calcium_positive=2),
+  3969: TCell(labels=[3969], calcium_labels=array([6416], dtype=uint16), N_frames_calcium_positive=1),
+  3989: TCell(labels=[3989], calcium_labels=array([5662, 6158], dtype=uint16), N_frames_calcium_positive=2),
+  4002: TCell(labels=[4002], calcium_labels=array([6338], dtype=uint16), N_frames_calcium_positive=1),
+  4008: TCell(labels=[4008], calcium_labels=array([6487], dtype=uint16), N_frames_calcium_positive=1),
+  4035: TCell(labels=[4035], calcium_labels=array([6504, 6896], dtype=uint16), N_frames_calcium_positive=2),
+  4056: TCell(labels=[4056], calcium_labels=array([6460], dtype=uint16), N_frames_calcium_positive=1),
+  4057: TCell(labels=[4057], calcium_labels=array([6065, 6526, 6914], dtype=uint16), N_frames_calcium_positive=3),
+  4067: TCell(labels=[4067], calcium_labels=array([6183], dtype=uint16), N_frames_calcium_positive=1),
+  4128: TCell(labels=[4128], calcium_labels=array([6222, 6648], dtype=uint16), N_frames_calcium_positive=2),
+  4174: TCell(labels=[4174], calcium_labels=array([6223], dtype=uint16), N_frames_calcium_positive=1),
+  4287: TCell(labels=[4287], calcium_labels=array([6529], dtype=uint16), N_frames_calcium_positive=1),
+  4335: TCell(labels=[4335], calcium_labels=array([6337, 6725], dtype=uint16), N_frames_calcium_positive=2),
+  4354: TCell(labels=[4354], calcium_labels=array([6264, 6696, 6698], dtype=uint16), N_frames_calcium_positive=2),
+  4362: TCell(labels=[4362], calcium_labels=array([6187], dtype=uint16), N_frames_calcium_positive=1),
+  4373: TCell(labels=[4373], calcium_labels=array([6247, 6661], dtype=uint16), N_frames_calcium_positive=2),
+  4401: TCell(labels=[4401], calcium_labels=array([6318, 6718], dtype=uint16), N_frames_calcium_positive=2),
+  4412: TCell(labels=[4412], calcium_labels=array([6394, 6786, 7172, 7217], dtype=uint16), N_frames_calcium_positive=3),
+  4432: TCell(labels=[4432], calcium_labels=array([6264, 6696], dtype=uint16), N_frames_calcium_positive=2),
+  4448: TCell(labels=[4448], calcium_labels=array([6193], dtype=uint16), N_frames_calcium_positive=1),
+  4466: TCell(labels=[4466], calcium_labels=array([6467], dtype=uint16), N_frames_calcium_positive=1)},
+ 131: {},
+ 132: {},
+ 133: {},
+ 134: {},
+ 135: {},
+ 136: {},
+ 137: {},
+ 138: {},
+ 139: {},
+ 140: {25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  1842: TCell(labels=[1842], calcium_labels=array([5031, 5459, 5933, 6391, 6776, 7205], dtype=uint16), N_frames_calcium_positive=6),
+  2429: TCell(labels=[2429], calcium_labels=array([6397, 6786, 7217, 7601], dtype=uint16), N_frames_calcium_positive=4),
+  3006: TCell(labels=[3006], calcium_labels=array([6818, 7248], dtype=uint16), N_frames_calcium_positive=2),
+  3243: TCell(labels=[3243], calcium_labels=array([6925], dtype=uint16), N_frames_calcium_positive=1),
+  3358: TCell(labels=[3358], calcium_labels=array([6614, 7000, 7405], dtype=uint16), N_frames_calcium_positive=3),
+  3469: TCell(labels=[3469], calcium_labels=array([5958, 6424, 6812], dtype=uint16), N_frames_calcium_positive=3),
+  3604: TCell(labels=[3604], calcium_labels=array([6457, 6866, 7290, 7701, 7712], dtype=uint16), N_frames_calcium_positive=4),
+  3633: TCell(labels=[3633], calcium_labels=array([6193, 6620], dtype=uint16), N_frames_calcium_positive=2),
+  3794: TCell(labels=[3794], calcium_labels=array([6600, 6990, 7401], dtype=uint16), N_frames_calcium_positive=3),
+  3920: TCell(labels=[3920], calcium_labels=array([6945, 7368], dtype=uint16), N_frames_calcium_positive=2),
+  4010: TCell(labels=[4010], calcium_labels=array([6595], dtype=uint16), N_frames_calcium_positive=1),
+  4012: TCell(labels=[4012], calcium_labels=array([6945, 7368], dtype=uint16), N_frames_calcium_positive=2),
+  4035: TCell(labels=[4035], calcium_labels=array([6504, 6896], dtype=uint16), N_frames_calcium_positive=2),
+  4057: TCell(labels=[4057], calcium_labels=array([6065, 6526, 6914], dtype=uint16), N_frames_calcium_positive=3),
+  4097: TCell(labels=[4097], calcium_labels=array([6716, 7124], dtype=uint16), N_frames_calcium_positive=2),
+  4128: TCell(labels=[4128], calcium_labels=array([6222, 6648], dtype=uint16), N_frames_calcium_positive=2),
+  4304: TCell(labels=[4304], calcium_labels=array([6776], dtype=uint16), N_frames_calcium_positive=1),
+  4335: TCell(labels=[4335], calcium_labels=array([6337, 6725], dtype=uint16), N_frames_calcium_positive=2),
+  4354: TCell(labels=[4354], calcium_labels=array([6264, 6696, 6698], dtype=uint16), N_frames_calcium_positive=2),
+  4373: TCell(labels=[4373], calcium_labels=array([6247, 6661], dtype=uint16), N_frames_calcium_positive=2),
+  4401: TCell(labels=[4401], calcium_labels=array([6318, 6718], dtype=uint16), N_frames_calcium_positive=2),
+  4412: TCell(labels=[4412], calcium_labels=array([6394, 6786, 7172, 7217], dtype=uint16), N_frames_calcium_positive=3),
+  4432: TCell(labels=[4432], calcium_labels=array([6264, 6696], dtype=uint16), N_frames_calcium_positive=2),
+  4501: TCell(labels=[4501], calcium_labels=array([6729], dtype=uint16), N_frames_calcium_positive=1),
+  4524: TCell(labels=[4524], calcium_labels=array([6733], dtype=uint16), N_frames_calcium_positive=1),
+  4557: TCell(labels=[4557], calcium_labels=array([6651], dtype=uint16), N_frames_calcium_positive=1),
+  4687: TCell(labels=[4687], calcium_labels=array([6786], dtype=uint16), N_frames_calcium_positive=1),
+  4718: TCell(labels=[4718], calcium_labels=array([6718], dtype=uint16), N_frames_calcium_positive=1),
+  4736: TCell(labels=[4736], calcium_labels=array([6648, 7032], dtype=uint16), N_frames_calcium_positive=2),
+  4740: TCell(labels=[4740], calcium_labels=array([6668, 7037, 7079], dtype=uint16), N_frames_calcium_positive=2),
+  4796: TCell(labels=[4796], calcium_labels=array([6661], dtype=uint16), N_frames_calcium_positive=1),
+  4808: TCell(labels=[4808], calcium_labels=array([6707], dtype=uint16), N_frames_calcium_positive=1),
+  4811: TCell(labels=[4811], calcium_labels=array([6888, 7312, 7715], dtype=uint16), N_frames_calcium_positive=3),
+  4830: TCell(labels=[4830], calcium_labels=array([6743], dtype=uint16), N_frames_calcium_positive=1),
+  4831: TCell(labels=[4831], calcium_labels=array([6752, 7181, 7554, 7580], dtype=uint16), N_frames_calcium_positive=3),
+  4848: TCell(labels=[4848], calcium_labels=array([6861, 7294, 7695], dtype=uint16), N_frames_calcium_positive=3),
+  4860: TCell(labels=[4860], calcium_labels=array([6595], dtype=uint16), N_frames_calcium_positive=1),
+  4870: TCell(labels=[4870], calcium_labels=array([6648, 7032], dtype=uint16), N_frames_calcium_positive=2),
+  4873: TCell(labels=[4873], calcium_labels=array([6600, 6990], dtype=uint16), N_frames_calcium_positive=2),
+  4876: TCell(labels=[4876], calcium_labels=array([6767, 7195, 7586], dtype=uint16), N_frames_calcium_positive=3)},
+ 141: {},
+ 142: {},
+ 143: {},
+ 144: {},
+ 145: {},
+ 146: {},
+ 147: {},
+ 148: {},
+ 149: {},
+ 150: {25: TCell(labels=[25], calcium_labels=array([3963, 4459, 4917, 5339, 5784, 6256, 6674, 7066], dtype=uint16), N_frames_calcium_positive=8),
+  1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  1842: TCell(labels=[1842], calcium_labels=array([5031, 5459, 5933, 6391, 6776, 7205], dtype=uint16), N_frames_calcium_positive=6),
+  2429: TCell(labels=[2429], calcium_labels=array([6397, 6786, 7217, 7601], dtype=uint16), N_frames_calcium_positive=4),
+  3006: TCell(labels=[3006], calcium_labels=array([6818, 7248], dtype=uint16), N_frames_calcium_positive=2),
+  3121: TCell(labels=[3121], calcium_labels=array([7160, 7540, 7558], dtype=uint16), N_frames_calcium_positive=2),
+  3358: TCell(labels=[3358], calcium_labels=array([6614, 7000, 7405], dtype=uint16), N_frames_calcium_positive=3),
+  3604: TCell(labels=[3604], calcium_labels=array([6457, 6866, 7290, 7701, 7712], dtype=uint16), N_frames_calcium_positive=4),
+  3659: TCell(labels=[3659], calcium_labels=array([6963, 7379], dtype=uint16), N_frames_calcium_positive=2),
+  3794: TCell(labels=[3794], calcium_labels=array([6600, 6990, 7401], dtype=uint16), N_frames_calcium_positive=3),
+  3920: TCell(labels=[3920], calcium_labels=array([6945, 7368], dtype=uint16), N_frames_calcium_positive=2),
+  4012: TCell(labels=[4012], calcium_labels=array([6945, 7368], dtype=uint16), N_frames_calcium_positive=2),
+  4097: TCell(labels=[4097], calcium_labels=array([6716, 7124], dtype=uint16), N_frames_calcium_positive=2),
+  4412: TCell(labels=[4412], calcium_labels=array([6394, 6786, 7172, 7217], dtype=uint16), N_frames_calcium_positive=3),
+  4453: TCell(labels=[4453], calcium_labels=array([7003, 7411], dtype=uint16), N_frames_calcium_positive=2),
+  4589: TCell(labels=[4589], calcium_labels=array([7288], dtype=uint16), N_frames_calcium_positive=1),
+  4701: TCell(labels=[4701], calcium_labels=array([6992], dtype=uint16), N_frames_calcium_positive=1),
+  4736: TCell(labels=[4736], calcium_labels=array([6648, 7032], dtype=uint16), N_frames_calcium_positive=2),
+  4740: TCell(labels=[4740], calcium_labels=array([6668, 7037, 7079], dtype=uint16), N_frames_calcium_positive=2),
+  4754: TCell(labels=[4754], calcium_labels=array([7209], dtype=uint16), N_frames_calcium_positive=1),
+  4777: TCell(labels=[4777], calcium_labels=array([7370], dtype=uint16), N_frames_calcium_positive=1),
+  4811: TCell(labels=[4811], calcium_labels=array([6888, 7312, 7715], dtype=uint16), N_frames_calcium_positive=3),
+  4831: TCell(labels=[4831], calcium_labels=array([6752, 7181, 7554, 7580], dtype=uint16), N_frames_calcium_positive=3),
+  4848: TCell(labels=[4848], calcium_labels=array([6861, 7294, 7695], dtype=uint16), N_frames_calcium_positive=3),
+  4870: TCell(labels=[4870], calcium_labels=array([6648, 7032], dtype=uint16), N_frames_calcium_positive=2),
+  4873: TCell(labels=[4873], calcium_labels=array([6600, 6990], dtype=uint16), N_frames_calcium_positive=2),
+  4876: TCell(labels=[4876], calcium_labels=array([6767, 7195, 7586], dtype=uint16), N_frames_calcium_positive=3),
+  5001: TCell(labels=[5001], calcium_labels=array([7248], dtype=uint16), N_frames_calcium_positive=1),
+  5040: TCell(labels=[5040], calcium_labels=array([7205, 7587], dtype=uint16), N_frames_calcium_positive=2),
+  5044: TCell(labels=[5044], calcium_labels=array([7195], dtype=uint16), N_frames_calcium_positive=1),
+  5092: TCell(labels=[5092], calcium_labels=array([7217], dtype=uint16), N_frames_calcium_positive=1),
+  5101: TCell(labels=[5101], calcium_labels=array([7160, 7558], dtype=uint16), N_frames_calcium_positive=2),
+  5138: TCell(labels=[5138], calcium_labels=array([7155, 7584], dtype=uint16), N_frames_calcium_positive=2),
+  5162: TCell(labels=[5162], calcium_labels=array([7136, 7540], dtype=uint16), N_frames_calcium_positive=2),
+  5171: TCell(labels=[5171], calcium_labels=array([7314, 7728], dtype=uint16), N_frames_calcium_positive=2),
+  5209: TCell(labels=[5209], calcium_labels=array([7003, 7411], dtype=uint16), N_frames_calcium_positive=2),
+  5237: TCell(labels=[5237], calcium_labels=array([6973], dtype=uint16), N_frames_calcium_positive=1),
+  5277: TCell(labels=[5277], calcium_labels=array([7352, 7750], dtype=uint16), N_frames_calcium_positive=2),
+  5288: TCell(labels=[5288], calcium_labels=array([7290, 7701], dtype=uint16), N_frames_calcium_positive=2)},
+ 151: {},
+ 152: {},
+ 153: {},
+ 154: {},
+ 155: {},
+ 156: {},
+ 157: {},
+ 158: {},
+ 159: {},
+ 160: {1040: TCell(labels=[1040], calcium_labels=array([3493, 4016, 4505, 4952, 5379, 5854, 6322, 6715, 7131, 7533],
+        dtype=uint16), N_frames_calcium_positive=10),
+  1440: TCell(labels=[1440], calcium_labels=array([4680, 5086, 5102, 5542, 6000, 6457, 6866, 6896, 7303, 7314, 7712,
+         7728], dtype=uint16), N_frames_calcium_positive=8),
+  2429: TCell(labels=[2429], calcium_labels=array([6397, 6786, 7217, 7601], dtype=uint16), N_frames_calcium_positive=4),
+  3121: TCell(labels=[3121], calcium_labels=array([7160, 7540, 7558], dtype=uint16), N_frames_calcium_positive=2),
+  3358: TCell(labels=[3358], calcium_labels=array([6614, 7000, 7405], dtype=uint16), N_frames_calcium_positive=3),
+  3604: TCell(labels=[3604], calcium_labels=array([6457, 6866, 7290, 7701, 7712], dtype=uint16), N_frames_calcium_positive=4),
+  3659: TCell(labels=[3659], calcium_labels=array([6963, 7379], dtype=uint16), N_frames_calcium_positive=2),
+  3794: TCell(labels=[3794], calcium_labels=array([6600, 6990, 7401], dtype=uint16), N_frames_calcium_positive=3),
+  4354: TCell(labels=[4354], calcium_labels=array([7482], dtype=uint16), N_frames_calcium_positive=1),
+  4432: TCell(labels=[4432], calcium_labels=array([7465], dtype=uint16), N_frames_calcium_positive=1),
+  4453: TCell(labels=[4453], calcium_labels=array([7003, 7411], dtype=uint16), N_frames_calcium_positive=2),
+  4597: TCell(labels=[4597], calcium_labels=array([7547], dtype=uint16), N_frames_calcium_positive=1),
+  4687: TCell(labels=[4687], calcium_labels=array([7566], dtype=uint16), N_frames_calcium_positive=1),
+  4720: TCell(labels=[4720], calcium_labels=array([7566], dtype=uint16), N_frames_calcium_positive=1),
+  4755: TCell(labels=[4755], calcium_labels=array([7678], dtype=uint16), N_frames_calcium_positive=1),
+  4811: TCell(labels=[4811], calcium_labels=array([6888, 7312, 7715], dtype=uint16), N_frames_calcium_positive=3),
+  4831: TCell(labels=[4831], calcium_labels=array([6752, 7181, 7554, 7580], dtype=uint16), N_frames_calcium_positive=3),
+  4848: TCell(labels=[4848], calcium_labels=array([6861, 7294, 7695], dtype=uint16), N_frames_calcium_positive=3),
+  4876: TCell(labels=[4876], calcium_labels=array([6767, 7195, 7586], dtype=uint16), N_frames_calcium_positive=3),
+  5005: TCell(labels=[5005], calcium_labels=array([7438], dtype=uint16), N_frames_calcium_positive=1),
+  5040: TCell(labels=[5040], calcium_labels=array([7205, 7587], dtype=uint16), N_frames_calcium_positive=2),
+  5101: TCell(labels=[5101], calcium_labels=array([7160, 7558], dtype=uint16), N_frames_calcium_positive=2),
+  5133: TCell(labels=[5133], calcium_labels=array([7488], dtype=uint16), N_frames_calcium_positive=1),
+  5138: TCell(labels=[5138], calcium_labels=array([7155, 7584], dtype=uint16), N_frames_calcium_positive=2),
+  5162: TCell(labels=[5162], calcium_labels=array([7136, 7540], dtype=uint16), N_frames_calcium_positive=2),
+  5171: TCell(labels=[5171], calcium_labels=array([7314, 7728], dtype=uint16), N_frames_calcium_positive=2),
+  5200: TCell(labels=[5200], calcium_labels=array([7445], dtype=uint16), N_frames_calcium_positive=1),
+  5209: TCell(labels=[5209], calcium_labels=array([7003, 7411], dtype=uint16), N_frames_calcium_positive=2),
+  5277: TCell(labels=[5277], calcium_labels=array([7352, 7750], dtype=uint16), N_frames_calcium_positive=2),
+  5288: TCell(labels=[5288], calcium_labels=array([7290, 7701], dtype=uint16), N_frames_calcium_positive=2),
+  5337: TCell(labels=[5337], calcium_labels=array([7601], dtype=uint16), N_frames_calcium_positive=1),
+  5338: TCell(labels=[5338], calcium_labels=array([7527], dtype=uint16), N_frames_calcium_positive=1),
+  5345: TCell(labels=[5345], calcium_labels=array([7540], dtype=uint16), N_frames_calcium_positive=1),
+  5368: TCell(labels=[5368], calcium_labels=array([7445], dtype=uint16), N_frames_calcium_positive=1),
+  5373: TCell(labels=[5373], calcium_labels=array([7586], dtype=uint16), N_frames_calcium_positive=1),
+  5399: TCell(labels=[5399], calcium_labels=array([7601], dtype=uint16), N_frames_calcium_positive=1),
+  5416: TCell(labels=[5416], calcium_labels=array([7450], dtype=uint16), N_frames_calcium_positive=1)},
+ 161: {}}
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lemanic Life Sciences Hackathon 2025 Team & Immune Synapse lab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

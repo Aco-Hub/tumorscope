@@ -311,7 +311,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -327,6 +329,23 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking">Tracking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-the-tracks">Converting the tracks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-filtering">Track filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-tracks-by-time">Filter tracks by time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-filtered-tracks">Save the filtered tracks</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -338,6 +357,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tracking-with-trackastra">
 <h1>Tracking with Trackastra<a class="headerlink" href="#tracking-with-trackastra" title="Link to this heading">#</a></h1>
+<p>We perform tracking with Trackastra; make sure torch is installed with the correct CUDA version, and that trackastra is installed.</p>
+<p>If you want to use the better ILP solver, you must install additional libraries; see the <a class="reference external" href="https://github.com/weigertlab/trackastra?tab=readme-ov-file#installation">installation instructions</a> for more details.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
@@ -358,6 +379,8 @@ INFO:numexpr.utils:NumExpr defaulting to 8 threads.
 </div>
 </div>
 </div>
+<section id="loading-the-data">
+<h2>Loading the data<a class="headerlink" href="#loading-the-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
@@ -378,6 +401,7 @@ Loaded image
 </div>
 </div>
 </div>
+<p>Again, we downsample the images by two to speed up the process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgs</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="p">(</span><span class="n">imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -392,6 +416,7 @@ Loaded image
 </div>
 </div>
 </div>
+<p>Below we load the pre-trained trackastra model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a pretrained model</span>
@@ -408,6 +433,18 @@ INFO:trackastra.model.model_api:Using device cuda
 </pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="tracking">
+<h2>Tracking<a class="headerlink" href="#tracking" title="Link to this heading">#</a></h2>
+<p>Below we compute the tracks.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The following paramaters are especially important for tracking:
+- <code class="docutils literal notranslate"><span class="pre">mode</span></code>: The greedy solver simply takes the most probable option at each point, it is fast but simple. <code class="docutils literal notranslate"><span class="pre">greedy_nodiv</span></code>is the same, but without divisions, which is the case in this data. Finally the <code class="docutils literal notranslate"><span class="pre">ilp</span></code> solver is the best, but also the slowest. It requires additional libraries to be installed.
+- <code class="docutils literal notranslate"><span class="pre">use_distance</span></code>: If set, tracks further apart than the distance are not connected. This must be tuned depending on the data.
+- <code class="docutils literal notranslate"><span class="pre">max_distance</span></code>: The maximum distance between two points to be connected, see above.
+- <code class="docutils literal notranslate"><span class="pre">allow_divisions</span></code>: If set, the algorithm allows divisions of tracks. Disable this if divisions are not part of the data.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -449,6 +486,9 @@ Solution graph		26729 nodes	25316 edges
 </div>
 </div>
 </div>
+<section id="converting-the-tracks">
+<h3>Converting the tracks<a class="headerlink" href="#converting-the-tracks" title="Link to this heading">#</a></h3>
+<p>Below we save the tracks to disk, and we load them again for additional filtering</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write to cell tracking challenge format</span>
@@ -467,6 +507,374 @@ Saving masks: 100%|██████████| 162/162 [00:00&lt;00:00, 181.
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari_ctc_io.reader</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_ctc</span><span class="p">,</span> <span class="n">_ctc_to_napari_tracks</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="track-filtering">
+<h2>Track filtering<a class="headerlink" href="#track-filtering" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">tracks_graph</span> <span class="o">=</span> <span class="n">read_ctc</span><span class="p">(</span>
+    <span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Cyril\Desktop\Code\tumorscope\DATA\tracked&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:napari_ctc_io.reader:Loaded tracks from C:\Users\Cyril\Desktop\Code\tumorscope\DATA\tracked\man_track.txt
+INFO:napari_ctc_io.reader:Running CTC format checks
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=1.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=2.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=3.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=6.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=7.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=8.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=9.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=10.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=11.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=12.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=14.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=15.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=16.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=17.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=19.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=20.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=21.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=22.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=23.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=24.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=25.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=26.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=27.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=29.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=30.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=32.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=33.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=36.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=37.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=38.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=39.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=40.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=43.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=44.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=46.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=48.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=49.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=50.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=51.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=53.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=54.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=55.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=58.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=59.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=60.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=62.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=64.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=65.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=69.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=70.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=71.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=72.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=73.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=74.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=75.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=76.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=77.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=79.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=81.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=82.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=83.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=84.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=85.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=86.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=88.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=89.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=90.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=92.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=95.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=96.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=97.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=98.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=99.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=100.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=101.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=104.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=105.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=109.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=110.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=111.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=113.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=115.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=116.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=117.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=118.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=119.
+WARNING:napari_ctc_io.reader:4 non-connected masks at t=120.
+WARNING:napari_ctc_io.reader:4 non-connected masks at t=121.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=122.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=123.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=124.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=125.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=126.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=127.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=128.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=129.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=132.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=133.
+WARNING:napari_ctc_io.reader:4 non-connected masks at t=134.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=136.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=137.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=141.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=142.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=145.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=146.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=147.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=149.
+WARNING:napari_ctc_io.reader:5 non-connected masks at t=150.
+WARNING:napari_ctc_io.reader:4 non-connected masks at t=151.
+WARNING:napari_ctc_io.reader:5 non-connected masks at t=152.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=153.
+WARNING:napari_ctc_io.reader:2 non-connected masks at t=154.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=155.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=157.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=158.
+WARNING:napari_ctc_io.reader:1 non-connected masks at t=159.
+WARNING:napari_ctc_io.reader:3 non-connected masks at t=161.
+INFO:napari_ctc_io.reader:Checks completed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tracks_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tracks</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;frame&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">])</span>
+<span class="n">tracks_df</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+<span class="n">tracks_df</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="filter-tracks-by-time">
+<h3>Filter tracks by time<a class="headerlink" href="#filter-tracks-by-time" title="Link to this heading">#</a></h3>
+<p>Below we discard tracks that are shorter than 5 frames, which helps with false positives. The number of frames can be adjusted depending on the specific data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">filter_masks_by_time</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks_df</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter masks by their length.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">masks_ids</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="n">valid_masks</span> <span class="o">=</span> <span class="n">masks_ids</span><span class="p">[</span><span class="n">masks_ids</span> <span class="o">&gt;=</span> <span class="n">min_length</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1"># In the masks array (T, H, W), remove labels with values that are not in valid_masks</span>
+    <span class="n">masks_filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">masks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">masks_filtered</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">valid_masks</span><span class="p">),</span> <span class="n">masks</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">tracks_df_filtered</span> <span class="o">=</span> <span class="n">tracks_df</span><span class="p">[</span><span class="n">tracks_df</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">valid_masks</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">masks_filtered</span><span class="p">,</span> <span class="n">tracks_df_filtered</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks_filtered</span><span class="p">,</span> <span class="n">filtered_tracks_df</span> <span class="o">=</span> <span class="n">filter_masks_by_time</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks_df</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_tracks_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>label</th>
+      <th>frame</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>26.634961</td>
+      <td>13.174807</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>14.884073</td>
+      <td>104.656250</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>16.186521</td>
+      <td>212.166099</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>0</td>
+      <td>7.246180</td>
+      <td>284.018676</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>0</td>
+      <td>16.390606</td>
+      <td>348.300783</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26661</th>
+      <td>1049</td>
+      <td>161</td>
+      <td>358.852544</td>
+      <td>202.169263</td>
+    </tr>
+    <tr>
+      <th>26662</th>
+      <td>1050</td>
+      <td>161</td>
+      <td>493.740546</td>
+      <td>463.212185</td>
+    </tr>
+    <tr>
+      <th>26663</th>
+      <td>1055</td>
+      <td>161</td>
+      <td>36.035928</td>
+      <td>129.623752</td>
+    </tr>
+    <tr>
+      <th>26664</th>
+      <td>1062</td>
+      <td>161</td>
+      <td>633.679825</td>
+      <td>101.527778</td>
+    </tr>
+    <tr>
+      <th>26665</th>
+      <td>1065</td>
+      <td>161</td>
+      <td>229.864633</td>
+      <td>670.640133</td>
+    </tr>
+  </tbody>
+</table>
+<p>23183 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="save-the-filtered-tracks">
+<h2>Save the filtered tracks<a class="headerlink" href="#save-the-filtered-tracks" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
+
+<span class="n">outdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./tracked&quot;</span><span class="p">)</span>
+
+<span class="n">filtered_tracks_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outdir</span> <span class="o">/</span> <span class="s2">&quot;man_track.txt&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">masks</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">masks</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Saving masks&quot;</span><span class="p">):</span>
+    <span class="n">tifffile</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span>
+        <span class="n">outdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;man_track</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">,</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zstd&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v = napari.Viewer()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v.add_labels(masks, name=&quot;masks&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Tracks layer &#39;tracks&#39; at 0x2d21a3affd0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v.add_tracks(tracks, name=&quot;tracks&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Tracks layer &#39;tracks [1]&#39; at 0x2d2bcba8f70&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v.add_labels(masks_filtered, name=&quot;masks_filtered&quot;)</span>
+
+<span class="c1"># filtered_tracks = filtered_tracks_df.to_numpy().astype(np.float32)</span>
+<span class="c1"># v.add_tracks(filtered_tracks, name=&quot;filtered_tracks&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Tracks layer &#39;filtered_tracks&#39; at 0x2d2c14816c0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -514,6 +922,30 @@ Saving masks: 100%|██████████| 162/162 [00:00&lt;00:00, 181.
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking">Tracking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-the-tracks">Converting the tracks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-filtering">Track filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-tracks-by-time">Filter tracks by time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-filtered-tracks">Save the filtered tracks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

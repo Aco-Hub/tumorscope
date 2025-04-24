@@ -312,7 +312,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -328,6 +330,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resizing-the-image">Resizing the image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation">Segmentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-model">Loading the model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-the-results">Saving the results</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -347,7 +362,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">resize</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
 </div>
 </div>
@@ -402,6 +417,9 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="resizing-the-image">
+<h2>Resizing the image<a class="headerlink" href="#resizing-the-image" title="Link to this heading">#</a></h2>
+<p>Below we downsample the images by a factgor of two. This speeds up the segmentation greatly while only having a small cost on precision, as labels can be upsampled later again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_resized</span> <span class="o">=</span>  <span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -413,7 +431,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v = napari.Viewer()</span>
 </pre></div>
 </div>
 </div>
@@ -429,9 +447,9 @@ requires access to qt_viewer, please open an issue to discuss.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image_resized</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
-<span class="n">v</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image_actin_resized</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;actin&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
-<span class="n">v</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image_calcium_resized</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;calcium&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;turbo&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v.add_image(image_resized, name=&quot;image&quot;, colormap=&quot;viridis&quot;)</span>
+<span class="c1"># v.add_image(image_actin_resized, name=&quot;actin&quot;, colormap=&quot;magma&quot;)</span>
+<span class="c1"># v.add_image(image_calcium_resized, name=&quot;calcium&quot;, colormap=&quot;turbo&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -440,6 +458,15 @@ requires access to qt_viewer, please open an issue to discuss.
 </pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="segmentation">
+<h2>Segmentation<a class="headerlink" href="#segmentation" title="Link to this heading">#</a></h2>
+<section id="loading-the-model">
+<h3>Loading the model<a class="headerlink" href="#loading-the-model" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For segmenting cells as marked by NucView, it is recommended to use the <code class="docutils literal notranslate"><span class="pre">cyto3</span></code> model. Other models are available for various modalities however.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -453,6 +480,16 @@ requires access to qt_viewer, please open an issue to discuss.
 </pre></div>
 </div>
 </div>
+</div>
+<p>Below is the code for Cellpose inference. We use <code class="docutils literal notranslate"><span class="pre">channels=[0,0]</span></code>, which must be used when segmenting grayscale images.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The main parameters in CellPose inference are :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">diameter</span></code> : The diameter of the cells in pixels. This is used to initialize the model. This is especially crucial, using napari you can use View &gt; Scale bar to measure the diameter of the cells in pixels. The default is 30, for the current data (downsampled by 2), we find 45 to be a good value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_threshold</span></code> : The threshold for the flow field. This is used to determine if a cell is present or not. The default is 0.4, but this can be adjusted based on the data. A lower value will result in more cells being detected, but also more false positives.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cellprob_threshold</span></code> : The threshold for the cell probability. This is used to filter out low-confidence detections. The default is 0.0, but increasing this value can help reduce false positives. Note that the range of values is [-8, 8], unlike many thresholds in image processing where the range is [0, 1].</p></li>
+</ul>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -470,67 +507,18 @@ requires access to qt_viewer, please open an issue to discuss.
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "46357aa94f0045e39c1cf4db239e22ba", "version_major": 2, "version_minor": 0}</script></div>
 </div>
+</section>
+</section>
+<section id="saving-the-results">
+<h2>Saving the results<a class="headerlink" href="#saving-the-results" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;masks&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Labels layer &#39;masks&#39; at 0x1a2fc2d3bb0&gt;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&quot;./results&quot;</span><span class="p">,</span> <span class="n">masks</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masked_actin</span> <span class="o">=</span> <span class="n">image_actin_resized</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">masked_actin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">masks</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">masked_actin</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># min_nonzero_value = masked_actin[masked_actin &gt; 0].mean()</span>
-<span class="c1"># masked_actin = np.where(masked_actin == 0, min_nonzero_value, masked_actin)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">masked_actin</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;masked_actin&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Image layer &#39;masked_actin&#39; at 0x1a303504610&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks_actin_masked</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cellpose_model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span>
-    <span class="n">masked_actin</span><span class="p">,</span> <span class="n">diameter</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">do_3D</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flow_threshold</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">cellprob_threshold</span><span class="o">=-</span><span class="mf">2.0</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">masks_actin_masked</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;masks_actin_masked&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Labels layer &#39;masks_actin_masked&#39; at 0x1a3035cb5e0&gt;
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -587,6 +575,26 @@ requires access to qt_viewer, please open an issue to discuss.
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resizing-the-image">Resizing the image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation">Segmentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-model">Loading the model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-the-results">Saving the results</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
