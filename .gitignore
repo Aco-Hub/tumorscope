@@ -36,3 +36,4 @@ htmlcov/
 # DATA folder
 DATA/
 book/_build/
+book/tracked/
