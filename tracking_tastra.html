@@ -183,7 +183,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="segmentation.html">Segmenting with Cellpose</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tcells_segmentation.html">T-cells segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcells_segmentation.html">T Cells segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mask_processing.html">Obtaining T cells instance labels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tracking</span></p>
@@ -340,14 +340,16 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking">Tracking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-pre-trained-model">Load the pre-trained model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-tracks">Computing the tracks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-the-tracks">Converting the tracks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-filtering">Track filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-refinement">Track refinement</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-tracks-by-time">Filter tracks by time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-filtered-tracks">Save the filtered tracks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-filtered-tracks">Save the filtered tracks</a></li>
 </ul>
             </nav>
         </div>
@@ -420,6 +422,11 @@ Loaded image
 </div>
 </div>
 </div>
+</section>
+<section id="tracking">
+<h2>Tracking<a class="headerlink" href="#tracking" title="Link to this heading">#</a></h2>
+<section id="load-the-pre-trained-model">
+<h3>Load the pre-trained model<a class="headerlink" href="#load-the-pre-trained-model" title="Link to this heading">#</a></h3>
 <p>Below we load the pre-trained trackastra model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -439,8 +446,8 @@ INFO:trackastra.model.model_api:Using device cuda
 </div>
 </div>
 </section>
-<section id="tracking">
-<h2>Tracking<a class="headerlink" href="#tracking" title="Link to this heading">#</a></h2>
+<section id="computing-the-tracks">
+<h3>Computing the tracks<a class="headerlink" href="#computing-the-tracks" title="Link to this heading">#</a></h3>
 <p>Below we compute the tracks.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -492,6 +499,7 @@ Solution graph		26729 nodes	25316 edges
 </div>
 </div>
 </div>
+</section>
 <section id="converting-the-tracks">
 <h3>Converting the tracks<a class="headerlink" href="#converting-the-tracks" title="Link to this heading">#</a></h3>
 <p>Below we save the tracks to disk, and we load them again for additional filtering</p>
@@ -513,6 +521,10 @@ Saving masks: 100%|██████████| 162/162 [00:00&lt;00:00, 181.
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="track-refinement">
+<h2>Track refinement<a class="headerlink" href="#track-refinement" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari_ctc_io.reader</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_ctc</span><span class="p">,</span> <span class="n">_ctc_to_napari_tracks</span>
@@ -524,10 +536,6 @@ Saving masks: 100%|██████████| 162/162 [00:00&lt;00:00, 181.
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="track-filtering">
-<h2>Track filtering<a class="headerlink" href="#track-filtering" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">tracks_graph</span> <span class="o">=</span> <span class="n">read_ctc</span><span class="p">(</span>
@@ -815,9 +823,8 @@ INFO:napari_ctc_io.reader:Checks completed
 </div></div></div>
 </div>
 </section>
-</section>
 <section id="save-the-filtered-tracks">
-<h2>Save the filtered tracks<a class="headerlink" href="#save-the-filtered-tracks" title="Link to this heading">#</a></h2>
+<h3>Save the filtered tracks<a class="headerlink" href="#save-the-filtered-tracks" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
@@ -891,6 +898,7 @@ INFO:napari_ctc_io.reader:Checks completed
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -958,14 +966,16 @@ INFO:napari_ctc_io.reader:Checks completed
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking">Tracking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-pre-trained-model">Load the pre-trained model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-tracks">Computing the tracks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-the-tracks">Converting the tracks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-filtering">Track filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-refinement">Track refinement</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-tracks-by-time">Filter tracks by time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-filtered-tracks">Save the filtered tracks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-filtered-tracks">Save the filtered tracks</a></li>
 </ul>
   </nav></div>
 
