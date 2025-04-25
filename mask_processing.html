@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Smoothing and spliting of cells &#8212; Tumorscope</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=309ca802" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mask_processing';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_round.png" class="logo__image only-light" alt="Tumorscope - Home"/>
+    <script>document.write(`<img src="_static/logo_round.png" class="logo__image only-dark" alt="Tumorscope - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="welcome.html">
+                    Tumorscope
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="segmentation.html">Segmenting with Cellpose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcells_segmentation.html">T-cells segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tracking_tastra.html">Tracking with Trackastra</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/mask_processing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Smoothing and spliting of cells</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tifffile</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imwrite</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="c1"># Load image and mask</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;Series003_cCAR_tumor.tif&quot;</span>
+<span class="n">mask_path</span> <span class="o">=</span> <span class="s2">&quot;masked_predictions.tiff&quot;</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>  <span class="c1"># Expecting shape: (H, W, C)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">mask_path</span><span class="p">)</span>    <span class="c1"># Expecting shape: (H, W)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Image shape: </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mask shape: </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create Napari viewer</span>
+<span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+
+<span class="c1"># Add the binary mask</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Mask&#39;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">blending</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Apply mask to each channel</span>
+<span class="n">masked_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">*</span> <span class="n">mask</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>  <span class="c1"># shape: (H, W, C)</span>
+
+<span class="c1"># Split and add each channel separately</span>
+<span class="n">colormaps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;magenta&#39;</span><span class="p">]</span>
+<span class="n">channel_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Channel 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel 4&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">masked_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span>
+        <span class="n">masked_image</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">channel_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">colormap</span><span class="o">=</span><span class="n">colormaps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">blending</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.75</span>
+    <span class="p">)</span>
+
+<span class="n">napari</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="c1"># Normalize mask to be between 0 and 255</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">((</span><span class="n">mask</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)[</span><span class="mi">55</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mask&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image shape: (162, 1412, 1412, 4)
+Mask shape: (162, 1412, 1412)
+</pre></div>
+</div>
+<img alt="_images/afb99a25ca0a3dcac30d5a58589dcb5acb6662a6cba7349310e10710746e5eef.png" src="_images/afb99a25ca0a3dcac30d5a58589dcb5acb6662a6cba7349310e10710746e5eef.png" />
+</div>
+</div>
+<section id="smoothing-and-spliting-of-cells">
+<h1>Smoothing and spliting of cells<a class="headerlink" href="#smoothing-and-spliting-of-cells" title="Link to this heading">#</a></h1>
+<p>We obtain a mask that doesn’t necessarly posses a cell shape. And we potentially need to split those connected pixels between multiple cells. For that we want to use voronoi_otsu_labeling in order to smooth the mask which will generate elipse (cell shape) and split the connected pixels of the mask between diffrent cells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add new cell with imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyclesperanto_prototype</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cle</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">resize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Initialize GPU (add this in a new cell)</span>
+
+<span class="c1"># Add processing cell</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_tcell_mask</span><span class="p">(</span><span class="n">mask_data</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process T-cell mask using Voronoi-Otsu labeling&quot;&quot;&quot;</span>
+    <span class="c1"># Push mask to GPU</span>
+    <span class="n">mask_gpu</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">mask_data</span><span class="p">)</span>
+    
+    <span class="c1"># Apply Voronoi-Otsu labeling</span>
+    <span class="n">segmented</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">mask_gpu</span><span class="p">,</span> 
+                                         <span class="n">spot_sigma</span><span class="o">=</span><span class="n">spot_sigma</span><span class="p">,</span> 
+                                         <span class="n">outline_sigma</span><span class="o">=</span><span class="n">outline_sigma</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">segmented</span>
+
+<span class="c1"># Add visualization cell</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">visualize_segmentation</span><span class="p">(</span><span class="n">original_mask</span><span class="p">,</span> <span class="n">segmented_mask</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Visualize original and segmented masks&quot;&quot;&quot;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+    
+    <span class="c1"># Original mask</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">original_mask</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original Mask&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Segmented result</span>
+    <span class="n">cle</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">segmented_mask</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Voronoi-Otsu Segmentation&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Add processing execution cell</span>
+<span class="c1"># Use your existing mask data</span>
+
+<span class="c1"># Process each frame if it&#39;s a time series</span>
+<span class="n">masked_image_one_chanel</span> <span class="o">=</span> <span class="n">masked_image</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="c1"># Process first frame as example</span>
+    <span class="n">segmented</span> <span class="o">=</span> <span class="n">process_tcell_mask</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="p">[</span><span class="mi">42</span><span class="p">])</span>
+    <span class="n">visualize_segmentation</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="p">[</span><span class="mi">42</span><span class="p">],</span> <span class="n">segmented</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Process single frame</span>
+    <span class="n">segmented</span> <span class="o">=</span> <span class="n">process_tcell_mask</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="p">)</span>
+    <span class="n">visualize_segmentation</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="p">,</span> <span class="n">segmented</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bb4c21eb15e9674d77128a1754267e99baf021d595da2a8946991c070a3b2c35.png" src="_images/bb4c21eb15e9674d77128a1754267e99baf021d595da2a8946991c070a3b2c35.png" />
+</div>
+</div>
+<p>That’s better. However, we need to adjust two parameters correctly: <code class="docutils literal notranslate"><span class="pre">spot_sigma</span></code> and <code class="docutils literal notranslate"><span class="pre">outline_sigma</span></code>.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">spot_sigma</span></code></strong> controls the number of cells detected within a continuous marked pixel zone.<br />
+Increasing <code class="docutils literal notranslate"><span class="pre">spot_sigma</span></code> results in fewer detected cells, as the algorithm merges more neighboring pixels into a single cell.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">outline_sigma</span></code></strong> affects the smoothing of the image.<br />
+A higher <code class="docutils literal notranslate"><span class="pre">outline_sigma</span></code> value produces smoother shapes and outlines by applying more aggressive image smoothing.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test different parameters</span>
+<span class="n">spot_sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">outline_sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">spot_sig</span> <span class="ow">in</span> <span class="n">spot_sigmas</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">outline_sig</span> <span class="ow">in</span> <span class="n">outline_sigmas</span><span class="p">:</span>
+        <span class="n">segmented</span> <span class="o">=</span> <span class="n">process_tcell_mask</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="p">[</span><span class="mi">88</span><span class="p">],</span>
+                                     <span class="n">spot_sigma</span><span class="o">=</span><span class="n">spot_sig</span><span class="p">,</span>
+                                     <span class="n">outline_sigma</span><span class="o">=</span><span class="n">outline_sig</span><span class="p">)</span>
+
+        <span class="c1"># Segmented result</span>
+        <span class="n">cle</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">segmented</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2cb38a500a22f8129a07e9f3801a5f534e4d4b3f7ac3a13ecf8972c9b327ecd1.png" src="_images/2cb38a500a22f8129a07e9f3801a5f534e4d4b3f7ac3a13ecf8972c9b327ecd1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test different parameters</span>
+<span class="n">spot_sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">outline_sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">spot_sig</span> <span class="ow">in</span> <span class="n">spot_sigmas</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">outline_sig</span> <span class="ow">in</span> <span class="n">outline_sigmas</span><span class="p">:</span>
+            <span class="n">segmented</span> <span class="o">=</span> <span class="n">process_tcell_mask</span><span class="p">(</span><span class="n">masked_image_one_chanel</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                         <span class="n">spot_sigma</span><span class="o">=</span><span class="n">spot_sig</span><span class="p">,</span>
+                                         <span class="n">outline_sigma</span><span class="o">=</span><span class="n">outline_sig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The post processing is done!!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_unique_colors</span><span class="p">(</span><span class="n">segmented_data</span><span class="p">,</span> <span class="n">background_value</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate unique colors for each unique value in the segmented data.&quot;&quot;&quot;</span>
+    <span class="n">unique_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">segmented_data</span><span class="p">)</span>
+    <span class="n">unique_values</span> <span class="o">=</span> <span class="n">unique_values</span><span class="p">[</span><span class="n">unique_values</span> <span class="o">!=</span> <span class="n">background_value</span><span class="p">]</span>  <span class="c1"># Exclude background value</span>
+
+    <span class="n">color_map</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">unique_values</span><span class="p">:</span>
+        <span class="c1"># Hash the value to generate a unique color</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># Use the value as the seed for reproducibility</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Generate random RGB values</span>
+        <span class="n">color_map</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">to_hex</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>  <span class="c1"># Convert to hex color</span>
+
+    <span class="k">return</span> <span class="n">color_map</span>
+
+<span class="c1"># Generate unique colors for the segmented data</span>
+<span class="n">segmented_values</span> <span class="o">=</span> <span class="n">segmented</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># Assuming `segmented` is a GPU array, fetch it to CPU</span>
+<span class="n">color_map</span> <span class="o">=</span> <span class="n">generate_unique_colors</span><span class="p">(</span><span class="n">segmented_values</span><span class="p">)</span>
+
+<span class="c1"># Display the color map</span>
+<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">color_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">, Color: </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value: 1, Color: #6ab800
+Value: 2, Color: #6f078c
+Value: 3, Color: #8cb54a
+Value: 4, Color: #f78cf8
+Value: 5, Color: #39de35
+Value: 6, Color: #e455d1
+Value: 7, Color: #13c770
+Value: 8, Color: #dff7de
+Value: 9, Color: #03807e
+Value: 10, Color: #c505a2
+Value: 11, Color: #2e0576
+Value: 12, Color: #27bd43
+Value: 13, Color: #c63dd2
+Value: 14, Color: #83c5de
+Value: 15, Color: #d82e0e
+Value: 16, Color: #39858c
+Value: 17, Color: #4b8731
+Value: 18, Color: #a681e0
+Value: 19, Color: #19c23f
+Value: 20, Color: #96e5e3
+Value: 21, Color: #0c4ab8
+Value: 22, Color: #357b6b
+Value: 23, Color: #84f1c3
+Value: 24, Color: #f5b2ff
+Value: 25, Color: #de9447
+Value: 26, Color: #4f84c4
+Value: 27, Color: #6dd0bc
+Value: 28, Color: #ba8f20
+Value: 29, Color: #dc4913
+Value: 30, Color: #a461a9
+Value: 31, Color: #49f4c4
+Value: 32, Color: #db5f8e
+Value: 33, Color: #3f7369
+Value: 34, Color: #0ac718
+Value: 35, Color: #754f3b
+Value: 36, Color: #ba99f3
+Value: 37, Color: #f17631
+Value: 38, Color: #62dbf1
+Value: 39, Color: #8bcbd1
+Value: 40, Color: #680ec9
+Value: 41, Color: #400cad
+Value: 42, Color: #60f2bb
+Value: 43, Color: #1d9b22
+Value: 44, Color: #d51bbe
+Value: 45, Color: #fc8c48
+Value: 46, Color: #c8a240
+Value: 47, Color: #1df8ba
+Value: 48, Color: #04e349
+Value: 49, Color: #4d3fec
+Value: 50, Color: #7e3a41
+Value: 51, Color: #ac0b58
+Value: 52, Color: #d20736
+Value: 53, Color: #d88f74
+Value: 54, Color: #6b5d2f
+Value: 55, Color: #18f87b
+Value: 56, Color: #fb55ac
+Value: 57, Color: #163b69
+Value: 58, Color: #5d737e
+Value: 59, Color: #ec28dd
+Value: 60, Color: #4d3052
+Value: 61, Color: #d22ee0
+Value: 62, Color: #097dd8
+Value: 63, Color: #8d650c
+Value: 64, Color: #619198
+Value: 65, Color: #380849
+Value: 66, Color: #27225c
+Value: 67, Color: #8bdbaf
+Value: 68, Color: #420b94
+Value: 69, Color: #4cce59
+Value: 70, Color: #edde95
+Value: 71, Color: #2f63d4
+Value: 72, Color: #1baf88
+Value: 73, Color: #a48983
+Value: 74, Color: #34c8db
+Value: 75, Color: #9111e2
+Value: 76, Color: #4fd155
+Value: 77, Color: #eaa4c0
+Value: 78, Color: #0caecc
+Value: 79, Color: #807780
+Value: 80, Color: #85b245
+Value: 81, Color: #5b57ee
+Value: 82, Color: #46a39f
+Value: 83, Color: #42aea9
+Value: 84, Color: #0c5e3e
+Value: 85, Color: #9e824c
+Value: 86, Color: #343527
+Value: 87, Color: #a7f3f8
+Value: 88, Color: #a58187
+Value: 89, Color: #7f4142
+Value: 90, Color: #2728fb
+Value: 91, Color: #33544c
+Value: 92, Color: #e2c96c
+Value: 93, Color: #9ba84e
+Value: 94, Color: #b79bb0
+Value: 95, Color: #3a31e2
+Value: 96, Color: #37e8d0
+Value: 97, Color: #d5f772
+Value: 98, Color: #bb914d
+Value: 99, Color: #ab7cd3
+Value: 100, Color: #8b476c
+Value: 101, Color: #849207
+Value: 102, Color: #98ac4c
+Value: 103, Color: #6e2c2c
+Value: 104, Color: #263ace
+Value: 105, Color: #1555db
+Value: 106, Color: #02f373
+Value: 107, Color: #29c090
+Value: 108, Color: #3c0994
+Value: 109, Color: #9c7db2
+Value: 110, Color: #1ea860
+Value: 111, Color: #9c2b6f
+Value: 112, Color: #60a3f2
+Value: 113, Color: #d913e4
+Value: 114, Color: #27deec
+Value: 115, Color: #32b369
+Value: 116, Color: #6059ed
+Value: 117, Color: #734c3b
+Value: 118, Color: #f0940f
+Value: 119, Color: #d87f34
+Value: 120, Color: #ad839f
+Value: 121, Color: #1c363b
+Value: 122, Color: #28b343
+Value: 123, Color: #b2493a
+Value: 124, Color: #1bbe92
+Value: 125, Color: #810fa0
+Value: 126, Color: #1b2116
+Value: 127, Color: #860a2f
+Value: 128, Color: #dd4322
+Value: 129, Color: #91449a
+Value: 130, Color: #244f8d
+Value: 131, Color: #a6f263
+Value: 132, Color: #c761d3
+Value: 133, Color: #6b211c
+Value: 134, Color: #cf72a0
+Value: 135, Color: #a95432
+Value: 136, Color: #272636
+Value: 137, Color: #f117b1
+Value: 138, Color: #bfb453
+Value: 139, Color: #7dc0ee
+Value: 140, Color: #bf1c00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_color_map_vectorized</span><span class="p">(</span><span class="n">segmented_values</span><span class="p">,</span> <span class="n">color_map</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply color map in a vectorized way.&quot;&quot;&quot;</span>
+    <span class="c1"># Ensure the color map keys are integers</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">color_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Convert hex to RGB [0, 1]</span>
+    <span class="n">colormap_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mcolors</span><span class="o">.</span><span class="n">to_rgb</span><span class="p">(</span><span class="n">color_map</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="c1"># Build a lookup table</span>
+    <span class="n">max_label</span> <span class="o">=</span> <span class="n">segmented_values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">lut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">max_label</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">lut</span><span class="p">[</span><span class="n">keys</span><span class="p">]</span> <span class="o">=</span> <span class="n">colormap_array</span>
+
+    <span class="c1"># Apply the color map using LUT</span>
+    <span class="n">rgb_image</span> <span class="o">=</span> <span class="n">lut</span><span class="p">[</span><span class="n">segmented_values</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">rgb_image</span>
+
+<span class="c1"># Apply the color map</span>
+<span class="n">colored_segmented_image</span> <span class="o">=</span> <span class="n">apply_color_map_vectorized</span><span class="p">(</span><span class="n">segmented_values</span><span class="p">,</span> <span class="n">color_map</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test different parameters</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="n">color</span>
+
+<span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">spot_sig</span> <span class="ow">in</span> <span class="n">spot_sigmas</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">outline_sig</span> <span class="ow">in</span> <span class="n">outline_sigmas</span><span class="p">:</span>
+        <span class="c1"># Add original image to Napari</span>
+        <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span>
+            <span class="n">masked_image_one_chanel</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Masked Image&#39;</span><span class="p">,</span>
+            <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+            <span class="n">blending</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Add unmasked image with enhanced contrast to Napari</span>
+        <span class="n">colormaps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>  <span class="c1"># Diverse colormaps</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span>
+                <span class="n">image</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span>
+                <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Channel </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                <span class="n">colormap</span><span class="o">=</span><span class="n">colormaps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">blending</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">,</span>
+                <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Add segmented image to Napari with normalized values</span>
+        <span class="n">segmented_normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">segmented</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">-</span> <span class="n">segmented</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">segmented</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">segmented</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+        <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span>
+            <span class="n">colored_segmented_image</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Segmented Image&#39;</span><span class="p">,</span>
+            <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>  <span class="c1"># Using viridis for better distinction</span>
+            <span class="n">blending</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span>
+        <span class="p">)</span>
+
+<span class="n">napari</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lemanic Life Sciences Hackathon 2025 Team & Immune Synapse lab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
