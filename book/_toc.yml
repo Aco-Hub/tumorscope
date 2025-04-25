@@ -12,3 +12,4 @@ parts:
   - caption : Tracking
     chapters:
     - file: tracking_tastra
+    - file: cancer_cells_moovies
