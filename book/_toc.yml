@@ -8,6 +8,7 @@ parts:
     chapters:
     - file: segmentation
     - file: tcells_segmentation
+    - file: mask_processing
   - caption : Tracking
     chapters:
     - file: tracking_tastra
