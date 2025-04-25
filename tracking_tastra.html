@@ -446,7 +446,7 @@ INFO:trackastra.model.model_api:Using device cuda
 <p class="admonition-title">Important</p>
 <p>The following paramaters are especially important for tracking:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: The greedy solver simply takes the most probable option at each point, it is fast but simple. <code class="docutils literal notranslate"><span class="pre">greedy_nodiv</span></code>is the same, but without divisions, which is the case in this data. Finally the <code class="docutils literal notranslate"><span class="pre">ilp</span></code> solver is the best, but also the slowest. It requires additional libraries to be installed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: The <code class="docutils literal notranslate"><span class="pre">greedy</span></code> solver simply takes the most probable option at each point, it is fast but simple. <code class="docutils literal notranslate"><span class="pre">greedy_nodiv</span></code>is the same, but without divisions, which is the case in this data. Finally the <code class="docutils literal notranslate"><span class="pre">ilp</span></code> solver is the best, but also the slowest. It requires additional libraries to be installed.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">use_distance</span></code>: If set, tracks further apart than the distance are not connected. This must be tuned depending on the data.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max_distance</span></code>: The maximum distance between two points to be connected, see above.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">allow_divisions</span></code>: If set, the algorithm allows divisions of tracks. Disable this if divisions are not part of the data.</p></li>
@@ -674,7 +674,7 @@ INFO:napari_ctc_io.reader:Checks completed
 </div>
 <section id="filter-tracks-by-time">
 <h3>Filter tracks by time<a class="headerlink" href="#filter-tracks-by-time" title="Link to this heading">#</a></h3>
-<p>Below we discard tracks that are shorter than 5 frames, which helps with false positives. The number of frames can be adjusted depending on the specific data.</p>
+<p>Below we discard tracks that are shorter than 5 frames, which helps with false positives. The number of frames can be adjusted depending on the specific data. Note that this function could be modified to filter by other criteria, such as the size of masks, etc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">filter_masks_by_time</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">tracks_df</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>

@@ -373,13 +373,13 @@ document.write(`
 <p>Below we load the videos and extract the channels.</p>
 <p>Currently this assumes there are 4 channels present :</p>
 <ul class="simple">
-<li><p>Channel 1: NucView (caspace-3 marker)</p>
+<li><p>Channel 1: CSFE (pan-cell marker)</p>
 <ul>
 <li><p>Tumor cells</p></li>
 <li><p>T cells (slightly)</p></li>
 </ul>
 </li>
-<li><p>Channel 2: Actin + tubulin channel</p>
+<li><p>Channel 2: Actin + tubulin channel + NucView (caspace-3 marker)</p>
 <ul>
 <li><p>T cells centrosomes (bright)</p></li>
 <li><p>Dying tumor cells nuclei (bright, may be due to cross-talk with NucView)</p></li>
@@ -422,7 +422,7 @@ document.write(`
 </div>
 <section id="resizing-the-image">
 <h2>Resizing the image<a class="headerlink" href="#resizing-the-image" title="Link to this heading">#</a></h2>
-<p>Below we downsample the images by a factgor of two. This speeds up the segmentation greatly while only having a small cost on precision, as labels can be upsampled later again.</p>
+<p>Below we downsample the images by a factor of two. This speeds up the segmentation greatly while only having a small cost on precision, as labels can be upsampled later again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_resized</span> <span class="o">=</span>  <span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -469,7 +469,7 @@ requires access to qt_viewer, please open an issue to discuss.
 <h3>Loading the model<a class="headerlink" href="#loading-the-model" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For segmenting cells as marked by NucView, it is recommended to use the <code class="docutils literal notranslate"><span class="pre">cyto3</span></code> model. Other models are available for various modalities however.</p>
+<p>For segmenting cells as marked by CSFE, it is recommended to use the <code class="docutils literal notranslate"><span class="pre">cyto3</span></code> model. Other models are available for various modalities however.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
